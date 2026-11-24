@@ -19,8 +19,8 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Dela+Gothic+One&family=Yellowtail&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=20261125b">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Dela+Gothic+One&family=Monoton&family=Yellowtail&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=20261125c">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BarOrPub","name":"立川 jokeR（ジョーカー）","alternateName":"Amusement Bar jokeR","url":"https://joker.lecrin.biz/","telephone":"042-512-9385","email":"tatikawajoker@gmail.com","image":"https://joker.lecrin.biz/img/photo/store-roulette.jpg","address":{"@type":"PostalAddress","postalCode":"190-0022","addressRegion":"東京都","addressLocality":"立川市","streetAddress":"錦町1-2-13 中島ビル2F","addressCountry":"JP"},"openingHours":"Mo-Su 17:00-23:00","sameAs":["https://x.com/JokerTachikawa"]}</script>
 </head>
 <body class="is-top">
@@ -28,46 +28,57 @@
   <p class="loader__txt">SHUFFLING<span>.</span><span>.</span><span>.</span></p>
   <div class="loader__cards"><span class="lcard">A</span><span class="lcard r">♥</span><span class="lcard">♠</span><span class="lcard r">♦</span></div>
 </div><button class="loader__skip" type="button">SKIP →</button></div>
-<button class="hb" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="menu"><span></span></button>
+<button class="hb" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="menu"><i class="hb__ring"></i><span class="hb__lines"><span></span></span><b class="hb__txt">MENU</b></button>
 <nav class="menu" id="menu" aria-label="メニュー">
   <div class="menu__img stripe tint-red"><img src="img/photo/store-roulette.jpg" alt="" loading="lazy"></div>
   <div class="menu__body">
-    <a href="./" style="margin-bottom:26px;display:inline-block"><span class="logo" aria-label="jokeR"><span class="logo__word">j<span class="logo__chip"></span>ke<span class="R">R</span></span><span class="logo__sub">AMUSEMENT CASINO</span></span></a>
-    <ul class="menu__list"><li><a href="./"><b>HOME</b><small>ホーム</small></a></li><li><a href="system/"><b>SYSTEM</b><small>料金システム</small></a></li><li><a href="menu/"><b>MENU</b><small>フード・ドリンク</small></a></li><li><a href="casino-games/"><b>CASINO GAMES</b><small>ゲーム解説</small></a></li><li><a href="access/"><b>ACCESS</b><small>アクセス</small></a></li><li><a href="recruit/"><b>RECRUIT</b><small>スタッフ募集</small></a></li><li><a href="contact/"><b>CONTACT</b><small>お問い合わせ</small></a></li></ul>
+    <a href="./" class="menu__logo"><span class="nlogo" aria-label="jokeR"><span class="nlogo__word">j<span class="nlogo__chip"></span>ke<span class="R">R</span></span><span class="nlogo__sub">AMUSEMENT CASINO</span></span></a>
+    <ul class="menu__list"><li><a href="./" style="--i:0"><b data-t="HOME">HOME</b><small>ホーム</small></a></li><li><a href="system/" style="--i:1"><b data-t="SYSTEM">SYSTEM</b><small>料金システム</small></a></li><li><a href="menu/" style="--i:2"><b data-t="MENU">MENU</b><small>フード・ドリンク</small></a></li><li><a href="casino-games/" style="--i:3"><b data-t="CASINO GAMES">CASINO GAMES</b><small>ゲーム解説</small></a></li><li><a href="access/" style="--i:4"><b data-t="ACCESS">ACCESS</b><small>アクセス</small></a></li><li><a href="recruit/" style="--i:5"><b data-t="RECRUIT">RECRUIT</b><small>スタッフ募集</small></a></li><li><a href="contact/" style="--i:6"><b data-t="CONTACT">CONTACT</b><small>お問い合わせ</small></a></li></ul>
     <div class="menu__sns"><a class="xb" href="https://x.com/JokerTachikawa" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.4l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 3.9H5.6L17.7 20z"/></svg> 公式X</a><a class="lineb" href="https://lin.ee/YkVqiiWJ" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 5.6 2 10.1c0 4 3.6 7.4 8.4 8 .3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.4 13.4 22 11.8 22 10.1 22 5.6 17.5 2 12 2z"/></svg> 公式LINE</a><a class="xb" href="tel:042-512-9385"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg> 042-512-9385</a></div>
   </div>
 </nav>
 <nav class="gnav" aria-label="サイト内">
-  <a class="gnav__logo" href="./"><span class="logo" aria-label="jokeR"><span class="logo__word">j<span class="logo__chip"></span>ke<span class="R">R</span></span></span></a>
+  <a class="gnav__logo" href="./"><span class="nlogo" aria-label="jokeR"><span class="nlogo__word">j<span class="nlogo__chip"></span>ke<span class="R">R</span></span><span class="nlogo__sub">AMUSEMENT CASINO</span></span></a>
   <ul><li><a href="./" aria-current="page">HOME</a></li><li><a href="system/">SYSTEM</a></li><li><a href="menu/">MENU</a></li><li><a href="casino-games/">CASINO GAMES</a></li><li><a href="access/">ACCESS</a></li><li><a href="recruit/">RECRUIT</a></li><li><a href="contact/">CONTACT</a></li></ul>
 </nav>
 <main>
 
 <section class="hero" aria-label="メインビジュアル">
   <div class="hero__slides">
-    <div class="hero__slide is-on stripe"><img src="img/photo/casino-dealer.jpg" alt="カードを配るディーラー"></div>
-    <div class="hero__slide stripe tint-red"><img src="img/photo/store-roulette.jpg" alt="jokeR店内のルーレットとバーカウンター"></div>
-    <div class="hero__slide stripe"><img src="img/photo/chips-dice.jpg" alt="チップとトランプ"></div>
+    <div class="hero__slide is-on"><img src="img/photo/casino-dealer.jpg" alt="カードを配るディーラー"></div>
+    <div class="hero__slide tint-red"><img src="img/photo/store-roulette.jpg" alt="jokeR店内のルーレットとバーカウンター"></div>
+    <div class="hero__slide"><img src="img/photo/chips-dice.jpg" alt="チップとトランプ"></div>
   </div>
   <div class="hero__shade"></div>
+  <div class="fx" aria-hidden="true">
+    <span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span><span class="beam b4"></span>
+    <span class="laser l1"></span><span class="laser l2"></span><span class="laser l3"></span>
+    <div class="bokeh"><i style="--x:0%;--y:0%;--s:8px;--d:6s;--dl:-0.0s;--c:#ff2bd6"></i><i style="--x:37%;--y:53%;--s:15px;--d:9s;--dl:-1.3s;--c:#3ee8ff"></i><i style="--x:74%;--y:6%;--s:22px;--d:12s;--dl:-2.6s;--c:#ffd23f"></i><i style="--x:11%;--y:59%;--s:29px;--d:6s;--dl:-3.9s;--c:#5dff9d"></i><i style="--x:48%;--y:12%;--s:10px;--d:9s;--dl:-5.2s;--c:#ff4f4f"></i><i style="--x:85%;--y:65%;--s:17px;--d:12s;--dl:-6.5s;--c:#ff2bd6"></i><i style="--x:22%;--y:18%;--s:24px;--d:6s;--dl:-7.8s;--c:#3ee8ff"></i><i style="--x:59%;--y:71%;--s:31px;--d:9s;--dl:-1.1s;--c:#ffd23f"></i><i style="--x:96%;--y:24%;--s:12px;--d:12s;--dl:-2.4s;--c:#5dff9d"></i><i style="--x:33%;--y:77%;--s:19px;--d:6s;--dl:-3.7s;--c:#ff4f4f"></i><i style="--x:70%;--y:30%;--s:26px;--d:9s;--dl:-5.0s;--c:#ff2bd6"></i><i style="--x:7%;--y:83%;--s:33px;--d:12s;--dl:-6.3s;--c:#3ee8ff"></i><i style="--x:44%;--y:36%;--s:14px;--d:6s;--dl:-7.6s;--c:#ffd23f"></i><i style="--x:81%;--y:89%;--s:21px;--d:9s;--dl:-0.9s;--c:#5dff9d"></i><i style="--x:18%;--y:42%;--s:28px;--d:12s;--dl:-2.2s;--c:#ff4f4f"></i><i style="--x:55%;--y:95%;--s:9px;--d:6s;--dl:-3.5s;--c:#ff2bd6"></i><i style="--x:92%;--y:48%;--s:16px;--d:9s;--dl:-4.8s;--c:#3ee8ff"></i><i style="--x:29%;--y:1%;--s:23px;--d:12s;--dl:-6.1s;--c:#ffd23f"></i><i style="--x:66%;--y:54%;--s:30px;--d:6s;--dl:-7.4s;--c:#5dff9d"></i><i style="--x:3%;--y:7%;--s:11px;--d:9s;--dl:-0.7s;--c:#ff4f4f"></i><i style="--x:40%;--y:60%;--s:18px;--d:12s;--dl:-2.0s;--c:#ff2bd6"></i><i style="--x:77%;--y:13%;--s:25px;--d:6s;--dl:-3.3s;--c:#3ee8ff"></i></div>
+    <span class="scan"></span><span class="strobe"></span>
+  </div>
   <div class="hero__dots"></div>
   <div class="hero__copy">
-    <p class="hero__tag">はじめてでも、ルールを忘れても大丈夫！</p>
-    <h1 class="hero__title"><span class="grad">立川で、<br class="sp">カジノ遊び。</span></h1>
-    <p class="hero__sub">立川駅南口 徒歩3分 ／ アミューズメントカジノバー jokeR</p>
+    <p class="hero__night" aria-hidden="true">CASINO NIGHT</p>
+    <h1 class="hero__title"><span class="nj">立川で、<br class="sp">カジノ遊び。</span></h1>
+    <p class="hero__tag"><span>はじめてでも、ルールを忘れても大丈夫！</span></p>
+    <p class="hero__sub">立川駅南口 徒歩3分 ／ AMUSEMENT CASINO BAR jokeR</p>
   </div>
   <a class="hero__first" href="#games"><span><b>FIRST TIME?</b><small>はじめての方へ</small></span><i>›</i></a>
   <span class="scroll-cue">SCROLL</span>
 </section>
 
+<div class="club">
+  <div class="club__lights" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="club__spot" aria-hidden="true"></div>
+
 <section class="brand">
   <div class="brand__ghost" aria-hidden="true">AMUSEMENT<br>CASINO BAR<br>TACHIKAWA</div>
-  <div data-reveal="zoom"><span class="logo" aria-label="jokeR"><span class="logo__word">j<span class="logo__chip"></span>ke<span class="R">R</span></span><span class="logo__sub">AMUSEMENT CASINO</span></span></div>
-  <p class="brand__lead" data-reveal>ブラックジャック・バカラ・ポーカー・ルーレット</p>
+  <div class="brand__sign" data-reveal="zoom"><span class="nlogo" aria-label="jokeR"><span class="nlogo__word">j<span class="nlogo__chip"></span>ke<span class="R">R</span></span><span class="nlogo__sub">AMUSEMENT CASINO</span></span></div>
+  <p class="brand__lead" data-reveal><span class="s1">♠</span> ブラックジャック <span class="s2">♥</span> バカラ <span class="s3">♦</span> ポーカー <span class="s4">♣</span> ルーレット</p>
 </section>
 
 <section class="sec intro">
-  <span class="vword l" aria-hidden="true">PLAY</span>
+  <span class="vword o l" aria-hidden="true">PLAY</span>
   <span class="vword o rr" aria-hidden="true">JOKER</span>
   <span class="float chip" data-px=".22" data-rot="-12" style="--s:110px;left:6%;top:8%"></span>
   <span class="float chip k" data-px=".35" data-rot="20" style="--s:70px;right:12%;top:4%"></span>
@@ -76,25 +87,26 @@
   <span class="float chip g" data-px=".28" data-rot="0" style="--s:60px;left:44%;bottom:4%"></span>
   <div class="wrap intro__grid">
     <div>
-      <h2 class="pop intro__h"><span class="pop-in">立川でのカジノ遊びは</span><br><span class="pop-in"><span class="r">『jokeR』</span>で！</span></h2>
+      <p class="kicker" data-reveal>WELCOME TO jokeR</p>
+      <h2 class="ttl intro__h"><span class="pop-in">立川でのカジノ遊びは</span><br><span class="pop-in"><span class="nr">jokeR</span>で！</span></h2>
       <div class="lead" data-reveal>
         <p>立川jokeRは、ディーラー講師の資格を持ったディーラーが在籍するアミューズメント・カジノバーです。</p>
-        <p><a href="casino-games/black-jack/" style="border-bottom:1px solid">ブラックジャック</a>をはじめ、<a href="casino-games/baccarat/" style="border-bottom:1px solid">バカラ</a>や<a href="casino-games/texas-holdem/" style="border-bottom:1px solid">ポーカー（テキサス・ホールデム）</a>などのカードゲーム、さらにルーレットでのご遊戯も堪能していただけます。</p>
+        <p><a href="casino-games/black-jack/" class="ul">ブラックジャック</a>をはじめ、<a href="casino-games/baccarat/" class="ul">バカラ</a>や<a href="casino-games/texas-holdem/" class="ul">ポーカー（テキサス・ホールデム）</a>などのカードゲーム、さらにルーレットでのご遊戯も堪能していただけます。</p>
         <p>在籍ディーラーが基本から丁寧に解説いたしますので、初心者の方でもルールを忘れてしまった方でも大丈夫！カジノ初心者の方でも気軽に遊べます。</p>
         <p>立川駅南口からわずか徒歩3分と好アクセスですので、気軽に足をお運びください。</p>
       </div>
-      <div class="btns" style="justify-content:flex-start" data-reveal><a class="btn" href="system/">料金システム</a></div>
+      <div class="btns" style="justify-content:flex-start" data-reveal><a class="btn nbtn" href="system/">料金システム</a></div>
     </div>
-    <figure class="intro__photo" data-reveal="right"><div class="wipe stripe" style="--wipe:var(--red)"><img class="ph" src="img/photo/bar-lamps.jpg" alt="バーカウンターのイメージ"></div><figcaption>ゲームの合間に一杯</figcaption></figure>
+    <figure class="intro__photo nframe" data-reveal="right"><div class="wipe" style="--wipe:#ff2bd6"><img class="ph" src="img/photo/bar-lamps.jpg" alt="バーカウンターのイメージ"></div><figcaption>ゲームの合間に一杯</figcaption></figure>
   </div>
 </section>
 
 <section class="sec pickup" id="pickup">
   <div class="wrap">
-    <div class="sec-title" data-reveal><b>PICK UP</b><small>おすすめプラン・ご案内</small></div>
+    <div class="ntitle" data-reveal><b>PICK UP</b><small>おすすめプラン・ご案内</small></div>
     <div class="slider" data-reveal>
       <button class="slider__arrow prev" type="button" aria-label="前へ">‹</button>
-      <div class="slider__track"><a class="pk" href="system/#student"><div class="pk__img stripe"><div class="pk__art" style="background:linear-gradient(135deg,#ffd23f,#ff9f1c);color:#141414"><span style="font-size:clamp(30px,3vw,40px)">学割</span><span style="font-size:15px;margin-top:6px">平日19時まで ／ 22歳以下</span></div></div><div class="pk__body"><p class="pk__cat">STUDENT</p><p class="pk__ttl">期間限定　学割（22歳以下）</p><p class="pk__txt">平日19時まで。2,000円で10,000 Point＋ワンドリンク付き。</p></div></a><a class="pk" href="system/#ladies"><div class="pk__img stripe"><div class="pk__art" style="background:linear-gradient(135deg,#ff4f8b,#b5179e);color:#fff"><span style="font-size:clamp(30px,3vw,40px)">女性限定</span><span style="font-size:15px;margin-top:6px">チップ＋飲み放題</span></div></div><div class="pk__body"><p class="pk__cat">LADIES</p><p class="pk__ttl">女性限定　飲み放題付きプラン</p><p class="pk__txt">2,000円で10,000 Point＋飲み放題。女性ひとりでも気軽に。</p></div></a><a class="pk" href="#party"><div class="pk__img stripe"><img src="img/photo/party-cake.jpg" alt="お誕生日のデザートプレート" loading="lazy"></div><div class="pk__body"><p class="pk__cat">PARTY</p><p class="pk__ttl">お誕生日・二次会・貸切</p><p class="pk__txt">お祝い事のお手伝い、各種貸切パーティーも承ります。</p></div></a><a class="pk" href="menu/"><div class="pk__img stripe"><img src="img/photo/store-bar.jpg" alt="赤いスツールが並ぶバーカウンター" loading="lazy"></div><div class="pk__body"><p class="pk__cat">BAR</p><p class="pk__ttl">バーカウンターのみもOK</p><p class="pk__txt">ゲームをしない方も、1時間1,000円＋ワンドリンク制でご利用いただけます。</p></div></a><a class="pk" href="recruit/"><div class="pk__img stripe"><img src="img/photo/bet-chips.jpg" alt="" loading="lazy"></div><div class="pk__body"><p class="pk__cat">RECRUIT</p><p class="pk__ttl">ディーラー・スタッフ募集</p><p class="pk__txt">未経験OK。資格を持った講師が基本から教えます。</p></div></a></div>
+      <div class="slider__track"><a class="pk" href="system/#student" style="--nc:#ffd23f"><div class="pk__img"><div class="pk__art" style="--nc:#ffd23f"><b>学割</b><span>WEEKDAY ～19:00 / UNDER 22</span></div><span class="pk__no">01</span></div><div class="pk__body"><p class="pk__cat">STUDENT</p><p class="pk__ttl">期間限定　学割（22歳以下）</p><p class="pk__txt">平日19時まで。2,000円で10,000 Point＋ワンドリンク付き。</p><span class="pk__go">MORE <i>→</i></span></div></a><a class="pk" href="system/#ladies" style="--nc:#ff4fd8"><div class="pk__img"><div class="pk__art" style="--nc:#ff4fd8"><b>女性限定</b><span>CHIPS + FREE DRINK</span></div><span class="pk__no">02</span></div><div class="pk__body"><p class="pk__cat">LADIES</p><p class="pk__ttl">女性限定　飲み放題付きプラン</p><p class="pk__txt">2,000円で10,000 Point＋飲み放題。女性ひとりでも気軽に。</p><span class="pk__go">MORE <i>→</i></span></div></a><a class="pk" href="#party" style="--nc:#3ee8ff"><div class="pk__img"><img src="img/photo/party-cake.jpg" alt="お誕生日のデザートプレート" loading="lazy"><span class="pk__no">03</span></div><div class="pk__body"><p class="pk__cat">PARTY</p><p class="pk__ttl">お誕生日・二次会・貸切</p><p class="pk__txt">お祝い事のお手伝い、各種貸切パーティーも承ります。</p><span class="pk__go">MORE <i>→</i></span></div></a><a class="pk" href="menu/" style="--nc:#ff7a2e"><div class="pk__img"><img src="img/photo/bar-bottles.jpg" alt="バーのボトル棚" loading="lazy"><span class="pk__no">04</span></div><div class="pk__body"><p class="pk__cat">BAR</p><p class="pk__ttl">バーカウンターのみもOK</p><p class="pk__txt">ゲームをしない方も、1時間1,000円＋ワンドリンク制でご利用いただけます。</p><span class="pk__go">MORE <i>→</i></span></div></a><a class="pk" href="recruit/" style="--nc:#5dff9d"><div class="pk__img"><img src="img/photo/bet-chips.jpg" alt="" loading="lazy"><span class="pk__no">05</span></div><div class="pk__body"><p class="pk__cat">RECRUIT</p><p class="pk__ttl">ディーラー・スタッフ募集</p><p class="pk__txt">未経験OK。資格を持った講師が基本から教えます。</p><span class="pk__go">MORE <i>→</i></span></div></a></div>
       <button class="slider__arrow next" type="button" aria-label="次へ">›</button>
       <div class="slider__dots"></div>
     </div>
@@ -103,26 +115,27 @@
 
 <section class="sec" id="news" style="padding-top:20px">
   <div class="wrap">
-    <div class="sec-title" data-reveal><b>NEWS</b><small>お知らせ・大会情報</small></div>
+    <div class="ntitle c" data-reveal><b>NEWS</b><small>お知らせ・大会情報</small></div>
     <div class="news__grid">
-      <div class="news__box" data-reveal="left">
-        <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.4l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 3.9H5.6L17.7 20z"/></svg> @JokerTachikawa</h3>
+      <div class="news__box nbox" style="--nc:#3ee8ff" data-reveal="left">
+        <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.4l8.1-9.3L1 2h7.2l5 6.6L18.9 2zm-1.2 18h1.7L7.4 3.9H5.6L17.7 20z"/></svg> @JokerTachikawa<span class="live">LIVE</span></h3>
         <div class="news__x">
           <a class="twitter-timeline" data-height="480" data-theme="dark" data-chrome="noheader nofooter transparent" href="https://twitter.com/JokerTachikawa?ref_src=twsrc%5Etfw">Tweets by JokerTachikawa</a>
-          <p class="note" style="margin-top:12px">最新の大会告知・営業情報は公式Xで発信しています。表示されない場合は<a href="https://x.com/JokerTachikawa" target="_blank" rel="noopener" style="border-bottom:1px solid">こちら</a>から。</p>
+          <p class="note" style="margin-top:12px">最新の大会告知・営業情報は公式Xで発信しています。表示されない場合は<a href="https://x.com/JokerTachikawa" target="_blank" rel="noopener" class="ul">こちら</a>から。</p>
         </div>
       </div>
-      <div class="news__box news__line" data-reveal="right">
+      <div class="news__box nbox news__line" style="--nc:#06e36a" data-reveal="right">
         <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 5.6 2 10.1c0 4 3.6 7.4 8.4 8 .3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.4 13.4 22 11.8 22 10.1 22 5.6 17.5 2 12 2z"/></svg> OFFICIAL LINE</h3>
-        <p class="big">ご予約・貸切のご相談は<br><span style="color:#06c755">公式LINE</span>からもOK！</p>
+        <p class="big">ご予約・貸切のご相談は<br><span class="ng">公式LINE</span>からもOK！</p>
         <p class="note">友だち追加で、イベントや大会のお知らせが届きます。</p>
         <a class="lineb" href="https://lin.ee/YkVqiiWJ" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 5.6 2 10.1c0 4 3.6 7.4 8.4 8 .3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.4 13.4 22 11.8 22 10.1 22 5.6 17.5 2 12 2z"/></svg> 友だち追加する</a>
         <a class="xb" href="tel:042-512-9385"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg> 042-512-9385</a>
-        <figure class="stripe wipe tint-dark" style="margin:6px 0 0;--wipe:#06c755"><img src="img/photo/bar-bottles.jpg" alt="" loading="lazy" style="aspect-ratio:16/8;object-fit:cover;width:100%"></figure>
+        <figure class="news__img" style="margin:6px 0 0"><img src="img/photo/chips-dice.jpg" alt="" loading="lazy"></figure>
       </div>
     </div>
   </div>
 </section>
+</div>
 
 <section class="sec" id="games">
   <div class="wrap">
@@ -291,6 +304,6 @@
 </footer>
 <a class="totop" href="#">PAGE<br>TOP</a>
 <div class="spcta"><a href="tel:042-512-9385"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 013 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg> 電話する</a><a href="https://lin.ee/YkVqiiWJ" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 5.6 2 10.1c0 4 3.6 7.4 8.4 8 .3.1.8.2.9.5.1.3.1.7 0 1l-.1.9c0 .3-.2 1 .9.5s5.9-3.5 8-6C21.4 13.4 22 11.8 22 10.1 22 5.6 17.5 2 12 2z"/></svg> LINE</a></div>
-<script src="assets/js/main.js?v=20261125b" defer></script>
+<script src="assets/js/main.js?v=20261125c" defer></script>
 </body>
 </html>

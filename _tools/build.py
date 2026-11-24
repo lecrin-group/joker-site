@@ -6,7 +6,7 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261125b"
+VER = "20261125c"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
@@ -22,6 +22,7 @@ IMG = {
   "hero":     "img/photo/casino-dealer.jpg",
   "lounge":   "img/photo/bar-lamps.jpg",
   "shelf":    "img/photo/bar-bottles.jpg",
+  "cocktail2":"img/photo/chips-dice.jpg",
   "store":    "img/photo/store-roulette.jpg",
   "bar":      "img/photo/store-bar.jpg",
   "cake":     "img/photo/party-cake.jpg",
@@ -62,6 +63,11 @@ def logo(sub=True):
     if sub: s += '<span class="logo__sub">AMUSEMENT CASINO</span>'
     return s + '</span>'
 
+def nlogo(sub=True):
+    s = '<span class="nlogo" aria-label="jokeR"><span class="nlogo__word">j<span class="nlogo__chip"></span>ke<span class="R">R</span></span>'
+    if sub: s += '<span class="nlogo__sub">AMUSEMENT CASINO</span>'
+    return s + '</span>'
+
 def card(rank, suit, w=None):
     red = suit in "♥♦"
     st = f' style="--w:{w}px"' if w else ""
@@ -88,7 +94,7 @@ def layout(path, title, desc, body, top=False, og="img/photo/store-roulette.jpg"
     navside = "".join(
         f'<li><a href="{u(p)}"{CUR if p==path else ""}>{en}</a></li>' for p,en,jp,s in NAV if s)
     navmenu = "".join(
-        f'<li><a href="{u(p)}"><b>{en}</b><small>{jp}</small></a></li>' for p,en,jp,s in NAV)
+        f'<li><a href="{u(p)}" style="--i:{i}"><b data-t="{en}">{en}</b><small>{jp}</small></a></li>' for i,(p,en,jp,s) in enumerate(NAV))
     full_title = title if top else f"{title}｜立川 jokeR（ジョーカー）アミューズメントカジノバー"
     loader = '''<div class="loader" aria-hidden="true"><div class="loader__in">
   <p class="loader__txt">SHUFFLING<span>.</span><span>.</span><span>.</span></p>
@@ -115,23 +121,23 @@ def layout(path, title, desc, body, top=False, og="img/photo/store-roulette.jpg"
 <link rel="apple-touch-icon" href="{P}img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Dela+Gothic+One&family=Yellowtail&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Dela+Gothic+One&family=Monoton&family=Yellowtail&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{P}assets/css/style.css?v={VER}">
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"BarOrPub","name":"立川 jokeR（ジョーカー）","alternateName":"Amusement Bar jokeR","url":"{SITE}/","telephone":"{TEL}","email":"{MAIL}","image":"{SITE}/img/photo/store-roulette.jpg","address":{{"@type":"PostalAddress","postalCode":"190-0022","addressRegion":"東京都","addressLocality":"立川市","streetAddress":"錦町1-2-13 中島ビル2F","addressCountry":"JP"}},"openingHours":"Mo-Su 17:00-23:00","sameAs":["{X_URL}"]}}</script>
 </head>
 <body class="{'is-top' if top else 'is-sub'}">
 {loader}
-<button class="hb" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="menu"><span></span></button>
+<button class="hb" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="menu"><i class="hb__ring"></i><span class="hb__lines"><span></span></span><b class="hb__txt">MENU</b></button>
 <nav class="menu" id="menu" aria-label="メニュー">
   <div class="menu__img stripe tint-red"><img src="{P}{IMG['store']}" alt="" loading="lazy"></div>
   <div class="menu__body">
-    <a href="{u('')}" style="margin-bottom:26px;display:inline-block">{logo()}</a>
+    <a href="{u('')}" class="menu__logo">{nlogo()}</a>
     <ul class="menu__list">{navmenu}</ul>
     <div class="menu__sns"><a class="xb" href="{X_URL}" target="_blank" rel="noopener">{IC_X} 公式X</a><a class="lineb" href="{LINE_URL}" target="_blank" rel="noopener">{IC_LINE} 公式LINE</a><a class="xb" href="tel:{TEL}">{IC_TEL} {TEL}</a></div>
   </div>
 </nav>
 <nav class="gnav" aria-label="サイト内">
-  <a class="gnav__logo" href="{u('')}">{logo(False)}</a>
+  <a class="gnav__logo" href="{u('')}">{nlogo()}</a>
   <ul>{navside}</ul>
 </nav>
 <main>
@@ -191,13 +197,14 @@ GAME_SVG = {
 
 def top():
     pickups = [
-      ("system/#student","STUDENT","期間限定　学割（22歳以下）","平日19時まで。2,000円で10,000 Point＋ワンドリンク付き。", '<div class="pk__art" style="background:linear-gradient(135deg,#ffd23f,#ff9f1c);color:#141414"><span style="font-size:clamp(30px,3vw,40px)">学割</span><span style="font-size:15px;margin-top:6px">平日19時まで ／ 22歳以下</span></div>'),
-      ("system/#ladies","LADIES","女性限定　飲み放題付きプラン","2,000円で10,000 Point＋飲み放題。女性ひとりでも気軽に。", '<div class="pk__art" style="background:linear-gradient(135deg,#ff4f8b,#b5179e);color:#fff"><span style="font-size:clamp(30px,3vw,40px)">女性限定</span><span style="font-size:15px;margin-top:6px">チップ＋飲み放題</span></div>'),
-      ("#party","PARTY","お誕生日・二次会・貸切","お祝い事のお手伝い、各種貸切パーティーも承ります。", f'<img src="{{P}}{IMG["cake"]}" alt="お誕生日のデザートプレート" loading="lazy">'),
-      ("menu/","BAR","バーカウンターのみもOK","ゲームをしない方も、1時間1,000円＋ワンドリンク制でご利用いただけます。", f'<img src="{{P}}{IMG["bar"]}" alt="赤いスツールが並ぶバーカウンター" loading="lazy">'),
-      ("recruit/","RECRUIT","ディーラー・スタッフ募集","未経験OK。資格を持った講師が基本から教えます。", f'<img src="{{P}}{IMG["dealer"]}" alt="" loading="lazy">'),
+      ("system/#student","STUDENT","期間限定　学割（22歳以下）","平日19時まで。2,000円で10,000 Point＋ワンドリンク付き。", '<div class="pk__art" style="--nc:#ffd23f"><b>学割</b><span>WEEKDAY ～19:00 / UNDER 22</span></div>', "#ffd23f"),
+      ("system/#ladies","LADIES","女性限定　飲み放題付きプラン","2,000円で10,000 Point＋飲み放題。女性ひとりでも気軽に。", '<div class="pk__art" style="--nc:#ff4fd8"><b>女性限定</b><span>CHIPS + FREE DRINK</span></div>', "#ff4fd8"),
+      ("#party","PARTY","お誕生日・二次会・貸切","お祝い事のお手伝い、各種貸切パーティーも承ります。", f'<img src="{{P}}{IMG["cake"]}" alt="お誕生日のデザートプレート" loading="lazy">', "#3ee8ff"),
+      ("menu/","BAR","バーカウンターのみもOK","ゲームをしない方も、1時間1,000円＋ワンドリンク制でご利用いただけます。", f'<img src="{{P}}{IMG["shelf"]}" alt="バーのボトル棚" loading="lazy">', "#ff7a2e"),
+      ("recruit/","RECRUIT","ディーラー・スタッフ募集","未経験OK。資格を持った講師が基本から教えます。", f'<img src="{{P}}{IMG["dealer"]}" alt="" loading="lazy">', "#5dff9d"),
     ]
-    pk_html = "".join(f'''<a class="pk" href="{{P}}{h}"><div class="pk__img stripe">{art}</div><div class="pk__body"><p class="pk__cat">{cat}</p><p class="pk__ttl">{t}</p><p class="pk__txt">{d}</p></div></a>''' for h,cat,t,d,art in pickups)
+    pk_html = "".join(f'''<a class="pk" href="{{P}}{h}" style="--nc:{nc}"><div class="pk__img">{art}<span class="pk__no">0{i+1}</span></div><div class="pk__body"><p class="pk__cat">{cat}</p><p class="pk__ttl">{t}</p><p class="pk__txt">{d}</p><span class="pk__go">MORE <i>→</i></span></div></a>''' for i,(h,cat,t,d,art,nc) in enumerate(pickups))
+    bokeh = "".join(f'<i style="--x:{(i*37)%100}%;--y:{(i*53)%100}%;--s:{8+(i*7)%26}px;--d:{6+(i*3)%9}s;--dl:-{(i*1.3)%8:.1f}s;--c:{["#ff2bd6","#3ee8ff","#ffd23f","#5dff9d","#ff4f4f"][i%5]}"></i>' for i in range(22))
 
     games_sel = "".join(f'''<a class="game" href="{h}" data-reveal data-delay="{i*0.1:.1f}"><span class="game__en">{en}</span><span class="game__ring">{GAME_SVG[k]}</span><span class="game__jp">・{jp}・</span></a>''' for i,(k,en,jp,h) in enumerate([
         ("bj","BLACKJACK","ブラックジャック","#g-bj"),("bac","BACCARAT","バカラ","#g-bac"),("poker","POKER","ポーカー","#g-poker"),("rl","ROULETTE","ルーレット","#g-rl")]))
@@ -216,29 +223,40 @@ def top():
     body = f'''
 <section class="hero" aria-label="メインビジュアル">
   <div class="hero__slides">
-    <div class="hero__slide is-on stripe"><img src="{{P}}{IMG['hero']}" alt="カードを配るディーラー"></div>
-    <div class="hero__slide stripe tint-red"><img src="{{P}}{IMG['store']}" alt="jokeR店内のルーレットとバーカウンター"></div>
-    <div class="hero__slide stripe"><img src="{{P}}{IMG['chips']}" alt="チップとトランプ"></div>
+    <div class="hero__slide is-on"><img src="{{P}}{IMG['hero']}" alt="カードを配るディーラー"></div>
+    <div class="hero__slide tint-red"><img src="{{P}}{IMG['store']}" alt="jokeR店内のルーレットとバーカウンター"></div>
+    <div class="hero__slide"><img src="{{P}}{IMG['chips']}" alt="チップとトランプ"></div>
   </div>
   <div class="hero__shade"></div>
+  <div class="fx" aria-hidden="true">
+    <span class="beam b1"></span><span class="beam b2"></span><span class="beam b3"></span><span class="beam b4"></span>
+    <span class="laser l1"></span><span class="laser l2"></span><span class="laser l3"></span>
+    <div class="bokeh">{bokeh}</div>
+    <span class="scan"></span><span class="strobe"></span>
+  </div>
   <div class="hero__dots"></div>
   <div class="hero__copy">
-    <p class="hero__tag">はじめてでも、ルールを忘れても大丈夫！</p>
-    <h1 class="hero__title"><span class="grad">立川で、<br class="sp">カジノ遊び。</span></h1>
-    <p class="hero__sub">立川駅南口 徒歩3分 ／ アミューズメントカジノバー jokeR</p>
+    <p class="hero__night" aria-hidden="true">CASINO NIGHT</p>
+    <h1 class="hero__title"><span class="nj">立川で、<br class="sp">カジノ遊び。</span></h1>
+    <p class="hero__tag"><span>はじめてでも、ルールを忘れても大丈夫！</span></p>
+    <p class="hero__sub">立川駅南口 徒歩3分 ／ AMUSEMENT CASINO BAR jokeR</p>
   </div>
   <a class="hero__first" href="#games"><span><b>FIRST TIME?</b><small>はじめての方へ</small></span><i>›</i></a>
   <span class="scroll-cue">SCROLL</span>
 </section>
 
+<div class="club">
+  <div class="club__lights" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="club__spot" aria-hidden="true"></div>
+
 <section class="brand">
   <div class="brand__ghost" aria-hidden="true">AMUSEMENT<br>CASINO BAR<br>TACHIKAWA</div>
-  <div data-reveal="zoom">{logo()}</div>
-  <p class="brand__lead" data-reveal>ブラックジャック・バカラ・ポーカー・ルーレット</p>
+  <div class="brand__sign" data-reveal="zoom">{nlogo()}</div>
+  <p class="brand__lead" data-reveal><span class="s1">♠</span> ブラックジャック <span class="s2">♥</span> バカラ <span class="s3">♦</span> ポーカー <span class="s4">♣</span> ルーレット</p>
 </section>
 
 <section class="sec intro">
-  <span class="vword l" aria-hidden="true">PLAY</span>
+  <span class="vword o l" aria-hidden="true">PLAY</span>
   <span class="vword o rr" aria-hidden="true">JOKER</span>
   <span class="float chip" data-px=".22" data-rot="-12" style="--s:110px;left:6%;top:8%"></span>
   <span class="float chip k" data-px=".35" data-rot="20" style="--s:70px;right:12%;top:4%"></span>
@@ -246,22 +264,23 @@ def top():
   <span class="float chip g" data-px=".28" data-rot="0" style="--s:60px;left:44%;bottom:4%"></span>
   <div class="wrap intro__grid">
     <div>
-      <h2 class="pop intro__h"><span class="pop-in">立川でのカジノ遊びは</span><br><span class="pop-in"><span class="r">『jokeR』</span>で！</span></h2>
+      <p class="kicker" data-reveal>WELCOME TO jokeR</p>
+      <h2 class="ttl intro__h"><span class="pop-in">立川でのカジノ遊びは</span><br><span class="pop-in"><span class="nr">jokeR</span>で！</span></h2>
       <div class="lead" data-reveal>
         <p>立川jokeRは、ディーラー講師の資格を持ったディーラーが在籍するアミューズメント・カジノバーです。</p>
-        <p><a href="{{P}}casino-games/black-jack/" style="border-bottom:1px solid">ブラックジャック</a>をはじめ、<a href="{{P}}casino-games/baccarat/" style="border-bottom:1px solid">バカラ</a>や<a href="{{P}}casino-games/texas-holdem/" style="border-bottom:1px solid">ポーカー（テキサス・ホールデム）</a>などのカードゲーム、さらにルーレットでのご遊戯も堪能していただけます。</p>
+        <p><a href="{{P}}casino-games/black-jack/" class="ul">ブラックジャック</a>をはじめ、<a href="{{P}}casino-games/baccarat/" class="ul">バカラ</a>や<a href="{{P}}casino-games/texas-holdem/" class="ul">ポーカー（テキサス・ホールデム）</a>などのカードゲーム、さらにルーレットでのご遊戯も堪能していただけます。</p>
         <p>在籍ディーラーが基本から丁寧に解説いたしますので、初心者の方でもルールを忘れてしまった方でも大丈夫！カジノ初心者の方でも気軽に遊べます。</p>
         <p>立川駅南口からわずか徒歩3分と好アクセスですので、気軽に足をお運びください。</p>
       </div>
-      <div class="btns" style="justify-content:flex-start" data-reveal><a class="btn" href="{{P}}system/">料金システム</a></div>
+      <div class="btns" style="justify-content:flex-start" data-reveal><a class="btn nbtn" href="{{P}}system/">料金システム</a></div>
     </div>
-    <figure class="intro__photo" data-reveal="right"><div class="wipe stripe" style="--wipe:var(--red)"><img class="ph" src="{{P}}{IMG['lounge']}" alt="バーカウンターのイメージ"></div><figcaption>ゲームの合間に一杯</figcaption></figure>
+    <figure class="intro__photo nframe" data-reveal="right"><div class="wipe" style="--wipe:#ff2bd6"><img class="ph" src="{{P}}{IMG['lounge']}" alt="バーカウンターのイメージ"></div><figcaption>ゲームの合間に一杯</figcaption></figure>
   </div>
 </section>
 
 <section class="sec pickup" id="pickup">
   <div class="wrap">
-    <div class="sec-title" data-reveal><b>PICK UP</b><small>おすすめプラン・ご案内</small></div>
+    <div class="ntitle" data-reveal><b>PICK UP</b><small>おすすめプラン・ご案内</small></div>
     <div class="slider" data-reveal>
       <button class="slider__arrow prev" type="button" aria-label="前へ">‹</button>
       <div class="slider__track">{pk_html}</div>
@@ -273,26 +292,27 @@ def top():
 
 <section class="sec" id="news" style="padding-top:20px">
   <div class="wrap">
-    <div class="sec-title" data-reveal><b>NEWS</b><small>お知らせ・大会情報</small></div>
+    <div class="ntitle c" data-reveal><b>NEWS</b><small>お知らせ・大会情報</small></div>
     <div class="news__grid">
-      <div class="news__box" data-reveal="left">
-        <h3>{IC_X} @JokerTachikawa</h3>
+      <div class="news__box nbox" style="--nc:#3ee8ff" data-reveal="left">
+        <h3>{IC_X} @JokerTachikawa<span class="live">LIVE</span></h3>
         <div class="news__x">
           <a class="twitter-timeline" data-height="480" data-theme="dark" data-chrome="noheader nofooter transparent" href="https://twitter.com/JokerTachikawa?ref_src=twsrc%5Etfw">Tweets by JokerTachikawa</a>
-          <p class="note" style="margin-top:12px">最新の大会告知・営業情報は公式Xで発信しています。表示されない場合は<a href="{X_URL}" target="_blank" rel="noopener" style="border-bottom:1px solid">こちら</a>から。</p>
+          <p class="note" style="margin-top:12px">最新の大会告知・営業情報は公式Xで発信しています。表示されない場合は<a href="{X_URL}" target="_blank" rel="noopener" class="ul">こちら</a>から。</p>
         </div>
       </div>
-      <div class="news__box news__line" data-reveal="right">
+      <div class="news__box nbox news__line" style="--nc:#06e36a" data-reveal="right">
         <h3>{IC_LINE} OFFICIAL LINE</h3>
-        <p class="big">ご予約・貸切のご相談は<br><span style="color:#06c755">公式LINE</span>からもOK！</p>
+        <p class="big">ご予約・貸切のご相談は<br><span class="ng">公式LINE</span>からもOK！</p>
         <p class="note">友だち追加で、イベントや大会のお知らせが届きます。</p>
         <a class="lineb" href="{LINE_URL}" target="_blank" rel="noopener">{IC_LINE} 友だち追加する</a>
         <a class="xb" href="tel:{TEL}">{IC_TEL} {TEL}</a>
-        <figure class="stripe wipe tint-dark" style="margin:6px 0 0;--wipe:#06c755"><img src="{{P}}{IMG['shelf']}" alt="" loading="lazy" style="aspect-ratio:16/8;object-fit:cover;width:100%"></figure>
+        <figure class="news__img" style="margin:6px 0 0"><img src="{{P}}{IMG['cocktail2']}" alt="" loading="lazy"></figure>
       </div>
     </div>
   </div>
 </section>
+</div>
 
 <section class="sec" id="games">
   <div class="wrap">

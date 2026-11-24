@@ -52,6 +52,7 @@
 
 ## これまで
 
+- 2026-11-25 トップ（Select より上）をナイトクラブ風に作り直し：ネオンのロゴ・ハンバーガー・ヒーロー（ライトの光線・レーザー・ストロボ・光の粒）・PICK UP と NEWS をネオンのカードに。フォントに Monoton・Zen Kaku 900 を追加
 - 2026-11-25 公開のしかたを GitHub Pages から、他のサイトと同じ「Xserver へ FTP 自動アップ」に変えた（GitHub Pages は止めた。CNAME・_config.yml は削除、.htaccess で 404 ページを設定）
 - 2026-11-25 GitHub に上げた（lecrin-group/joker-site）
 - 2026-11-25 ナギサの写真7枚に差し替え（バカラ以外）

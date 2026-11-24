@@ -122,6 +122,16 @@
   }
   onScroll();
 
+  /* ---------- club spotlight follows the mouse ---------- */
+  var club = document.querySelector(".club");
+  if (club && !reduce && window.matchMedia("(pointer:fine)").matches) {
+    club.addEventListener("pointermove", function (e) {
+      var r = club.getBoundingClientRect();
+      club.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      club.style.setProperty("--my", (e.clientY - r.top) + "px");
+    });
+  }
+
   /* ---------- pickup slider ---------- */
   document.querySelectorAll(".slider").forEach(function (sl) {
     var track = sl.querySelector(".slider__track");
