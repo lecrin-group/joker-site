@@ -46,7 +46,10 @@ jobs:
           local-dir: ./
           server-dir: ${{ secrets.FTP_SERVER_DIR }}
           dry-run: ${{ inputs.dry_run == true }} # push のときは必ず本番
-          # サーバーにだけある .htaccess などは触らない
+          # .htaccess・.htpasswd はサーバー側のものを使う（上げない・消さない）
+          #   Xserver の「アクセス制限」（ID・パスワードの鍵）は .htaccess に書き込まれるため、
+          #   ここで上げると更新のたびに鍵が外れてしまう。exclude に入れたファイルはサーバーから消されない
+          #   リポジトリの .htaccess（404 ページの設定）を直したときは、Xserver のファイルマネージャで手で直す
           exclude: |
             **/.git*
             **/.git*/**
@@ -54,3 +57,7 @@ jobs:
             **/*.md
             _tools/**
             img/orig/**
+            .htaccess
+            **/.htaccess
+            .htpasswd
+            **/.htpasswd

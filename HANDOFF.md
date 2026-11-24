@@ -3,9 +3,10 @@
 公開先：https://joker.lecrin.biz （Xserver。GitHub から自動アップ）／ 旧サイト：https://casino-joker.jp/
 リポジトリ：https://github.com/lecrin-group/joker-site
 公開のしかた：main に push すると `.github/workflows/deploy.yml` が FTP で Xserver の joker.lecrin.biz のフォルダへ自動アップ（他のサイトと同じ形。見本は hearts-recruit）。DNS はさわらない（Xserver でサブドメインを作ったときの A レコードのまま）
-- Secrets：FTP_SERVER / FTP_USERNAME / FTP_PASSWORD / FTP_SERVER_DIR（サブドメインのフォルダ。最後は /）
-- Variables：DEPLOY_ENABLED = true（お試し実行で上げ先を確かめてから入れる）
-- `_tools/`・`img/orig/`・`*.md` はサーバーに上げない
+- Secrets：FTP_SERVER = sv8695.xserver.jp ／ FTP_USERNAME = github-joker@lecrin.biz（jokeR 専用。joker.lecrin.biz のフォルダにしか入れない）／ FTP_PASSWORD（ナギサが管理）／ FTP_SERVER_DIR = ./
+- Variables：DEPLOY_ENABLED = true（入れてある。push のたびに本番へ自動アップ）
+- `_tools/`・`img/orig/`・`*.md`・`.htaccess`・`.htpasswd` はサーバーに上げない
+- `.htaccess` はサーバーにあるものが本物（Xserver の「アクセス制限」の鍵がここに書かれるため）。404 の設定などを直すときは Xserver のファイルマネージャで直す
 新しい順に上から書く。
 
 ## いまの状態（2026-11-25）
@@ -51,6 +52,9 @@
 - 旧サイトの地図（Googleマイマップ）は消えていたので、住所の Google マップに替えた
 
 ## これまで
+
+- 2026-11-25 店長確認のため Xserver の「アクセス制限」（ID・パスワード）をかける準備。自動アップで鍵が外れないよう、.htaccess・.htpasswd を上げない設定にした
+- 2026-11-25 Xserver へ初回アップ（jokeR 専用 FTP アカウント github-joker@lecrin.biz を作成）
 
 - 2026-11-25 ナギサが店内で撮った動画・写真（ダウンロードの IMG_59xx・LongVideo）から差し替え：トップの背景を店内の動画に（`img/video/hero-wide.mp4` は PC、`hero-tall.mp4` はスマホ。各8秒・約5MB）。紹介の写真・ブラックジャック・バカラ・スタッフ募集・メニュー画面・ディーラー/求人/アクセスの見出しを店内の写真に（`img/photo/store-*.jpg`、動画のコマを切り出して色を整えたもの）。写っている方の掲載許可は取得済み。仮の画像はなくなった
 - 2026-11-25 トップ（Select より上）をナイトクラブ風に作り直し：ネオンのロゴ・ハンバーガー・ヒーロー（ライトの光線・レーザー・ストロボ・光の粒）・PICK UP と NEWS をネオンのカードに。フォントに Monoton・Zen Kaku 900 を追加
