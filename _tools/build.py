@@ -6,19 +6,22 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261125a"
+VER = "20261125b"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
 IMG = {
   "roulette": "img/ph/roulette.svg",
-  "dealer":   "img/ph/dealer.svg",
-  "blackjack":"img/ph/blackjack.svg",
+  "dealer":   "img/photo/bet-chips.jpg",
+  "blackjack":"img/photo/bet-chips.jpg",
   "baccarat": "img/ph/baccarat.svg",
-  "poker":    "img/ph/poker.svg",
-  "hands":    "img/ph/hands.svg",
-  "chips":    "img/ph/chips.svg",
-  "highball": "img/ph/highball.svg",
+  "poker":    "img/photo/royal-flush.jpg",
+  "hands":    "img/photo/casino-dealer.jpg",
+  "chips":    "img/photo/chips-dice.jpg",
+  "highball": "img/photo/cocktails.jpg",
+  "hero":     "img/photo/casino-dealer.jpg",
+  "lounge":   "img/photo/bar-lamps.jpg",
+  "shelf":    "img/photo/bar-bottles.jpg",
   "store":    "img/photo/store-roulette.jpg",
   "bar":      "img/photo/store-bar.jpg",
   "cake":     "img/photo/party-cake.jpg",
@@ -213,9 +216,9 @@ def top():
     body = f'''
 <section class="hero" aria-label="メインビジュアル">
   <div class="hero__slides">
-    <div class="hero__slide is-on stripe"><img src="{{P}}{IMG['roulette']}" alt=""></div>
+    <div class="hero__slide is-on stripe"><img src="{{P}}{IMG['hero']}" alt="カードを配るディーラー"></div>
     <div class="hero__slide stripe tint-red"><img src="{{P}}{IMG['store']}" alt="jokeR店内のルーレットとバーカウンター"></div>
-    <div class="hero__slide stripe"><img src="{{P}}{IMG['dealer']}" alt=""></div>
+    <div class="hero__slide stripe"><img src="{{P}}{IMG['chips']}" alt="チップとトランプ"></div>
   </div>
   <div class="hero__shade"></div>
   <div class="hero__dots"></div>
@@ -252,7 +255,7 @@ def top():
       </div>
       <div class="btns" style="justify-content:flex-start" data-reveal><a class="btn" href="{{P}}system/">料金システム</a></div>
     </div>
-    <figure class="intro__photo" data-reveal="right"><div class="wipe stripe" style="--wipe:var(--red)"><img class="ph" src="{{P}}{IMG['dealer']}" alt="ディーラー"></div><figcaption>資格を持ったディーラーが在籍</figcaption></figure>
+    <figure class="intro__photo" data-reveal="right"><div class="wipe stripe" style="--wipe:var(--red)"><img class="ph" src="{{P}}{IMG['lounge']}" alt="バーカウンターのイメージ"></div><figcaption>ゲームの合間に一杯</figcaption></figure>
   </div>
 </section>
 
@@ -285,7 +288,7 @@ def top():
         <p class="note">友だち追加で、イベントや大会のお知らせが届きます。</p>
         <a class="lineb" href="{LINE_URL}" target="_blank" rel="noopener">{IC_LINE} 友だち追加する</a>
         <a class="xb" href="tel:{TEL}">{IC_TEL} {TEL}</a>
-        <figure class="stripe wipe tint-dark" style="margin:6px 0 0;--wipe:#06c755"><img src="{{P}}{IMG['chips']}" alt="" loading="lazy" style="aspect-ratio:16/8;object-fit:cover;width:100%"></figure>
+        <figure class="stripe wipe tint-dark" style="margin:6px 0 0;--wipe:#06c755"><img src="{{P}}{IMG['shelf']}" alt="" loading="lazy" style="aspect-ratio:16/8;object-fit:cover;width:100%"></figure>
       </div>
     </div>
   </div>
@@ -304,7 +307,7 @@ def top():
   </div>
 </section>
 
-{gsec("g-bj","c-red","BLACKJACK","ブラックジャック","blackjack","ディーラーとプレイヤー（自分）が対戦するゲーム。ルールは簡単、2枚以上のカードの合計が「21」に近いほうが勝ち。ただし「22」以上になったら即負け！","casino-games/black-jack/", wipe="#111")}
+{gsec("g-bj","c-red","BLACKJACK","ブラックジャック","blackjack","ディーラーとプレイヤー（自分）が対戦するゲーム。ルールは簡単、2枚以上のカードの合計が「21」に近いほうが勝ち。ただし「22」以上になったら即負け！","casino-games/black-jack/", tall=True, wipe="#111")}
 {gsec("g-bac","c-gold","BACCARAT","バカラ","baccarat","「バンカー」と「プレイヤー」の仮想の二人の勝負で、どちらが勝つかを予想して賭けるゲーム。2〜3枚のカードの合計点数の下一桁が、9に近い方が勝ちです。","casino-games/baccarat/", tall=True, wipe="#111")}
 {gsec("g-poker","c-green","POKER","テキサス・ホールデム","poker","ポーカーの一種。各プレイヤーに配られる2枚の手札と、全員共通の「コミュニティ・カード」を組み合わせて役をつくり勝負します。毎週の大会も開催中！","casino-games/texas-holdem/", wipe="#111")}
 <section class="gsec c-dark" id="g-rl">
@@ -473,7 +476,7 @@ def menu():
       cat("SHOT","ショット", rows([("テキーラ","1,000円"),("イエーガーマイスター","1,000円")])),
       cat("SOFT DRINK","ソフトドリンク", allp("600円", ["ウーロン茶","緑茶","ジャスミン茶","コーラ","ジンジャーエール","オレンジジュース","グレープフルーツジュース","リンゴジュース","アセロラジュース","コーヒー","紅茶","ミルクティー"])),
     ])
-    body = phead("FOOD DRINK", "フード・ドリンク", "highball", ["MENU"], "tint-gold") + f'''
+    body = phead("FOOD DRINK", "フード・ドリンク", "shelf", ["MENU"], "tint-gold") + f'''
 <section class="sec" style="padding-top:50px">
   <div class="wrap">
     <div class="block">
