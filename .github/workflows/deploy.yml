@@ -1,0 +1,56 @@
+# jokeR 公式サイト：main に push されたら、サイトを Xserver（joker.lecrin.biz）へ自動アップする
+# FTP の情報はリポジトリに書かず、GitHub の Secrets から読む（hearts-recruit と同じ決まり）
+#
+# ⚠️ はじめての自動アップの前に、必ず「お試し」で上げる先を確かめること
+#   1. Settings → Secrets and variables → Actions → Secrets に4つ入れる
+#      FTP_SERVER / FTP_USERNAME / FTP_PASSWORD / FTP_SERVER_DIR（サブドメインのフォルダ。最後は / で終える）
+#   2. Actions → Deploy to Xserver → Run workflow（お試しにチェック）で、上げる予定のファイルだけログに出す
+#   3. 合っていたら、Settings → Secrets and variables → Actions → Variables に DEPLOY_ENABLED = true を入れる
+#      → それ以降は push のたびに本番へ自動アップ
+#   DEPLOY_ENABLED が無いあいだは、push しても何も上げない（手動の実行だけ動く）
+name: Deploy to Xserver
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - ".github/**"
+      - "**.md"
+      - "_tools/**"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "お試し（サーバーは何も書きかえず、上げる予定のファイルだけログに出す）"
+        type: boolean
+        default: true
+
+concurrency:
+  group: deploy-xserver
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Upload to Xserver (FTPS)
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          timeout: 120000
+          local-dir: ./
+          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          dry-run: ${{ inputs.dry_run == true }} # push のときは必ず本番
+          # サーバーにだけある .htaccess などは触らない
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            **/*.md
+            _tools/**
+            img/orig/**

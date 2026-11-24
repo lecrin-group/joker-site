@@ -1,8 +1,11 @@
 # HANDOFF — jokeR 立川 公式サイト（新）
 
-公開先：https://joker.lecrin.biz （GitHub Pages）／ 旧サイト：https://casino-joker.jp/
-リポジトリ：https://github.com/lecrin-group/joker-site （Public・main の一番上を公開）／ Pages 設定：https://github.com/lecrin-group/joker-site/settings/pages
-DNS：lecrin.biz は Xserver。joker の CNAME → lecrin-group.github.io
+公開先：https://joker.lecrin.biz （Xserver。GitHub から自動アップ）／ 旧サイト：https://casino-joker.jp/
+リポジトリ：https://github.com/lecrin-group/joker-site
+公開のしかた：main に push すると `.github/workflows/deploy.yml` が FTP で Xserver の joker.lecrin.biz のフォルダへ自動アップ（他のサイトと同じ形。見本は hearts-recruit）。DNS はさわらない（Xserver でサブドメインを作ったときの A レコードのまま）
+- Secrets：FTP_SERVER / FTP_USERNAME / FTP_PASSWORD / FTP_SERVER_DIR（サブドメインのフォルダ。最後は /）
+- Variables：DEPLOY_ENABLED = true（お試し実行で上げ先を確かめてから入れる）
+- `_tools/`・`img/orig/`・`*.md` はサーバーに上げない
 新しい順に上から書く。
 
 ## いまの状態（2026-11-25）
@@ -18,7 +21,6 @@ DNS：lecrin.biz は Xserver。joker の CNAME → lecrin-group.github.io
 ## 作り方
 
 - `_tools/build.py` が全ページの HTML を作る。中身を直すときは build.py を直してから、リポジトリの一番上で `python3 _tools/build.py .`
-- `_` で始まるフォルダは GitHub Pages で公開されない
 - CSS：`assets/css/style.css`、JS：`assets/js/main.js`（ライブラリなし）。直したら build.py の `VER` を変える（キャッシュ対策）
 
 ## 写真の差し替え方
@@ -50,6 +52,7 @@ DNS：lecrin.biz は Xserver。joker の CNAME → lecrin-group.github.io
 
 ## これまで
 
-- 2026-11-25 GitHub に公開（lecrin-group/joker-site）。最初の push は写真差し替え前の版だった。DNS は Xserver で A レコードを消して CNAME に替える必要あり（課題 No.37）
+- 2026-11-25 公開のしかたを GitHub Pages から、他のサイトと同じ「Xserver へ FTP 自動アップ」に変えた（GitHub Pages は止めた。CNAME・_config.yml は削除、.htaccess で 404 ページを設定）
+- 2026-11-25 GitHub に上げた（lecrin-group/joker-site）
 - 2026-11-25 ナギサの写真7枚に差し替え（バカラ以外）
 - 2026-11-25 新サイトを作成（Claude Code）。ドメイン joker.lecrin.biz をナギサが作成

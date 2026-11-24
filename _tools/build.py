@@ -741,7 +741,6 @@ def notfound():
     os.replace(os.path.join(OUT, "index.html"), os.path.join(OUT, "404.html"))
 
 notfound(); top(); system(); menu(); games(); blackjack(); baccarat(); holdem(); dealer(); access(); recruit(); contact()
-open(os.path.join(OUT, "CNAME"), "w").write("joker.lecrin.biz\n")
 open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
 paths = ["", "system/", "menu/", "casino-games/", "casino-games/black-jack/", "casino-games/baccarat/", "casino-games/texas-holdem/", "profile/", "access/", "recruit/", "contact/"]
 open(os.path.join(OUT, "sitemap.xml"), "w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "".join(f"  <url><loc>{SITE}/{p}</loc></url>\n" for p in paths) + "</urlset>\n")
