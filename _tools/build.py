@@ -6,7 +6,7 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261125m"
+VER = "20261125n"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
@@ -250,8 +250,8 @@ def top():
 <section class="hero" aria-label="メインビジュアル">
   <div class="hero__media">
     <div class="hero__slide is-on"><video class="hero__video" muted loop playsinline autoplay preload="auto" poster="{{P}}{IMG['table']}" data-wide="{{P}}img/video/hero-wide.mp4" data-tall="{{P}}img/video/hero-tall.mp4" aria-hidden="true"></video></div>
-    <div class="hero__slide"><picture><source media="(max-width:767px) and (orientation:portrait)" srcset="{{P}}img/photo/hero-2-tall.jpg"><img src="{{P}}img/photo/hero-2-wide.jpg" alt="jokeRのテーブルでディーラーがカードを配る様子" loading="lazy"></picture></div>
-    <div class="hero__slide"><picture><source media="(max-width:767px) and (orientation:portrait)" srcset="{{P}}{IMG['room']}"><img src="{{P}}img/photo/hero-3-wide.jpg" alt="赤いカーテンとポーカーテーブルのあるjokeRの店内" loading="lazy"></picture></div>
+    <div class="hero__slide"><picture><source media="(max-width:767px) and (orientation:portrait)" srcset="{{P}}img/photo/hero-2-tall.jpg"><img src="{{P}}img/photo/hero-2-wide.jpg" alt="テーブルに置かれたエースのカードとチップ" decoding="async" style="object-position:30% 60%"></picture></div>
+    <div class="hero__slide"><picture><source media="(max-width:767px) and (orientation:portrait)" srcset="{{P}}img/photo/hero-3-tall.jpg"><img src="{{P}}img/photo/hero-3-wide.jpg" alt="ネオンに照らされたバーのボトル棚" decoding="async"></picture></div>
   </div>
   <div class="hero__shade"></div>
   <div class="fx" aria-hidden="true">
