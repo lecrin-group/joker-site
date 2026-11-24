@@ -41,6 +41,21 @@
     });
   }
 
+  /* ---------- hero video (wide / tall) ---------- */
+  var hv = document.querySelector(".hero__video");
+  if (hv) {
+    var pick = function () { return window.innerWidth < 768 && window.innerHeight > window.innerWidth ? hv.dataset.tall : hv.dataset.wide; };
+    if (reduce) { hv.removeAttribute("autoplay"); }
+    else {
+      hv.src = pick();
+      var p = hv.play(); if (p && p.catch) p.catch(function () {});
+      var last = hv.src;
+      window.addEventListener("resize", function () {
+        var n = pick(); if (n && hv.src.indexOf(n.replace(/^\.\.\//g, "")) === -1 && n !== last) { last = n; hv.src = n; hv.play().catch(function () {}); }
+      });
+    }
+  }
+
   /* ---------- hero slideshow ---------- */
   var slides = document.querySelectorAll(".hero__slide");
   if (slides.length > 1) {

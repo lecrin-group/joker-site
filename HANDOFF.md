@@ -14,7 +14,7 @@
 - デザイン：GLOBAL GROVE（global-grove.com）を8割、BAGUS・REGALO を2割。高級にしすぎない、ポップ寄り
   - GROVE から：ローディング、左上の黒ラベルのナビ、白い四角のハンバーガー、写真の斜めストライプ、袋文字の英字、ネオンの筆記体見出し、カッコ型の枠とネオンアイコン、色ベタの区画を斜めに流れる文字
   - BAGUS・REGALO から：明朝体の英字見出し＋小さい日本語、PICK UP のスライダー、細い線のボタン、メニュー表
-- 写真は 2026-11-25 にナギサからもらった7枚に差し替え済み（`img/photo/` の bar-lamps・cocktails・casino-dealer・bar-bottles・chips-dice・royal-flush・bet-chips）。**仮の画像が残っているのはバカラだけ**（`img/ph/baccarat.svg`）
+- 写真は店内の撮影（動画のコマ）と、ナギサからもらった7枚を使っている。（`img/photo/` の bar-lamps・cocktails・casino-dealer・bar-bottles・chips-dice・royal-flush・bet-chips）。**仮の画像が残っているのはバカラだけ**（`img/ph/baccarat.svg`）
 - ロゴは文字で作った仮のもの（o の字をチップにした）。元データが届いたら差し替え
 - お問い合わせフォームは、送信するとメールアプリが開く方式（GitHub Pages ではフォームの受信ができないため）
 
@@ -52,6 +52,7 @@
 
 ## これまで
 
+- 2026-11-25 ナギサが店内で撮った動画・写真（ダウンロードの IMG_59xx・LongVideo）から差し替え：トップの背景を店内の動画に（`img/video/hero-wide.mp4` は PC、`hero-tall.mp4` はスマホ。各8秒・約5MB）。紹介の写真・ブラックジャック・バカラ・スタッフ募集・メニュー画面・ディーラー/求人/アクセスの見出しを店内の写真に（`img/photo/store-*.jpg`、動画のコマを切り出して色を整えたもの）。写っている方の掲載許可は取得済み。仮の画像はなくなった
 - 2026-11-25 トップ（Select より上）をナイトクラブ風に作り直し：ネオンのロゴ・ハンバーガー・ヒーロー（ライトの光線・レーザー・ストロボ・光の粒）・PICK UP と NEWS をネオンのカードに。フォントに Monoton・Zen Kaku 900 を追加
 - 2026-11-25 公開のしかたを GitHub Pages から、他のサイトと同じ「Xserver へ FTP 自動アップ」に変えた（GitHub Pages は止めた。CNAME・_config.yml は削除、.htaccess で 404 ページを設定）
 - 2026-11-25 GitHub に上げた（lecrin-group/joker-site）

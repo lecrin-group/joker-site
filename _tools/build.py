@@ -6,21 +6,25 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261125c"
+VER = "20261125e"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
 IMG = {
   "roulette": "img/ph/roulette.svg",
-  "dealer":   "img/photo/bet-chips.jpg",
+  "dealer":   "img/photo/store-shuffle.jpg",
   "blackjack":"img/photo/bet-chips.jpg",
-  "baccarat": "img/ph/baccarat.svg",
+  "baccarat": "img/photo/store-dealing.jpg",
   "poker":    "img/photo/royal-flush.jpg",
   "hands":    "img/photo/casino-dealer.jpg",
   "chips":    "img/photo/chips-dice.jpg",
   "highball": "img/photo/cocktails.jpg",
   "hero":     "img/photo/casino-dealer.jpg",
-  "lounge":   "img/photo/bar-lamps.jpg",
+  "lounge":   "img/photo/store-welcome.jpg",
+  "rband":    "img/photo/store-dealer.jpg",
+  "bjreal":   "img/photo/store-blackjack.jpg",
+  "room":     "img/photo/store-photo-tall.jpg",
+  "table":    "img/photo/store-table.jpg",
   "shelf":    "img/photo/bar-bottles.jpg",
   "cocktail2":"img/photo/chips-dice.jpg",
   "store":    "img/photo/store-roulette.jpg",
@@ -87,7 +91,7 @@ def band(en, jp, cls=""):
   <div class="band__row rev">{en_s}</div>
 </div>'''
 
-def layout(path, title, desc, body, top=False, og="img/photo/store-roulette.jpg"):
+def layout(path, title, desc, body, top=False, og="img/photo/store-table.jpg"):
     depth = path.count("/")
     P = "../" * depth
     def u(p): return P + p if p else (P or "./")
@@ -123,13 +127,13 @@ def layout(path, title, desc, body, top=False, og="img/photo/store-roulette.jpg"
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Dela+Gothic+One&family=Monoton&family=Yellowtail&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{P}assets/css/style.css?v={VER}">
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"BarOrPub","name":"立川 jokeR（ジョーカー）","alternateName":"Amusement Bar jokeR","url":"{SITE}/","telephone":"{TEL}","email":"{MAIL}","image":"{SITE}/img/photo/store-roulette.jpg","address":{{"@type":"PostalAddress","postalCode":"190-0022","addressRegion":"東京都","addressLocality":"立川市","streetAddress":"錦町1-2-13 中島ビル2F","addressCountry":"JP"}},"openingHours":"Mo-Su 17:00-23:00","sameAs":["{X_URL}"]}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"BarOrPub","name":"立川 jokeR（ジョーカー）","alternateName":"Amusement Bar jokeR","url":"{SITE}/","telephone":"{TEL}","email":"{MAIL}","image":"{SITE}/img/photo/store-table.jpg","address":{{"@type":"PostalAddress","postalCode":"190-0022","addressRegion":"東京都","addressLocality":"立川市","streetAddress":"錦町1-2-13 中島ビル2F","addressCountry":"JP"}},"openingHours":"Mo-Su 17:00-23:00","sameAs":["{X_URL}"]}}</script>
 </head>
 <body class="{'is-top' if top else 'is-sub'}">
 {loader}
 <button class="hb" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="menu"><i class="hb__ring"></i><span class="hb__lines"><span></span></span><b class="hb__txt">MENU</b></button>
 <nav class="menu" id="menu" aria-label="メニュー">
-  <div class="menu__img stripe tint-red"><img src="{P}{IMG['store']}" alt="" loading="lazy"></div>
+  <div class="menu__img"><img src="{P}{IMG['room']}" alt="" loading="lazy"></div>
   <div class="menu__body">
     <a href="{u('')}" class="menu__logo">{nlogo()}</a>
     <ul class="menu__list">{navmenu}</ul>
@@ -222,10 +226,8 @@ def top():
 
     body = f'''
 <section class="hero" aria-label="メインビジュアル">
-  <div class="hero__slides">
-    <div class="hero__slide is-on"><img src="{{P}}{IMG['hero']}" alt="カードを配るディーラー"></div>
-    <div class="hero__slide tint-red"><img src="{{P}}{IMG['store']}" alt="jokeR店内のルーレットとバーカウンター"></div>
-    <div class="hero__slide"><img src="{{P}}{IMG['chips']}" alt="チップとトランプ"></div>
+  <div class="hero__media">
+    <video class="hero__video" muted loop playsinline autoplay preload="auto" poster="{{P}}{IMG['table']}" data-wide="{{P}}img/video/hero-wide.mp4" data-tall="{{P}}img/video/hero-tall.mp4" aria-hidden="true"></video>
   </div>
   <div class="hero__shade"></div>
   <div class="fx" aria-hidden="true">
@@ -234,7 +236,6 @@ def top():
     <div class="bokeh">{bokeh}</div>
     <span class="scan"></span><span class="strobe"></span>
   </div>
-  <div class="hero__dots"></div>
   <div class="hero__copy">
     <p class="hero__night" aria-hidden="true">CASINO NIGHT</p>
     <h1 class="hero__title"><span class="nj">立川で、<br class="sp">カジノ遊び。</span></h1>
@@ -274,7 +275,7 @@ def top():
       </div>
       <div class="btns" style="justify-content:flex-start" data-reveal><a class="btn nbtn" href="{{P}}system/">料金システム</a></div>
     </div>
-    <figure class="intro__photo nframe" data-reveal="right"><div class="wipe" style="--wipe:#ff2bd6"><img class="ph" src="{{P}}{IMG['lounge']}" alt="バーカウンターのイメージ"></div><figcaption>ゲームの合間に一杯</figcaption></figure>
+    <figure class="intro__photo nframe" data-reveal="right"><div class="wipe" style="--wipe:#ff2bd6"><img class="ph" src="{{P}}{IMG['lounge']}" alt="jokeRの店内でディーラーがゲームを進める様子"></div><figcaption>jokeR の店内</figcaption></figure>
   </div>
 </section>
 
@@ -327,7 +328,7 @@ def top():
   </div>
 </section>
 
-{gsec("g-bj","c-red","BLACKJACK","ブラックジャック","blackjack","ディーラーとプレイヤー（自分）が対戦するゲーム。ルールは簡単、2枚以上のカードの合計が「21」に近いほうが勝ち。ただし「22」以上になったら即負け！","casino-games/black-jack/", tall=True, wipe="#111")}
+{gsec("g-bj","c-red","BLACKJACK","ブラックジャック","bjreal","ディーラーとプレイヤー（自分）が対戦するゲーム。ルールは簡単、2枚以上のカードの合計が「21」に近いほうが勝ち。ただし「22」以上になったら即負け！","casino-games/black-jack/", tall=True, wipe="#111")}
 {gsec("g-bac","c-gold","BACCARAT","バカラ","baccarat","「バンカー」と「プレイヤー」の仮想の二人の勝負で、どちらが勝つかを予想して賭けるゲーム。2〜3枚のカードの合計点数の下一桁が、9に近い方が勝ちです。","casino-games/baccarat/", tall=True, wipe="#111")}
 {gsec("g-poker","c-green","POKER","テキサス・ホールデム","poker","ポーカーの一種。各プレイヤーに配られる2枚の手札と、全員共通の「コミュニティ・カード」を組み合わせて役をつくり勝負します。毎週の大会も開催中！","casino-games/texas-holdem/", wipe="#111")}
 <section class="gsec c-dark" id="g-rl">
@@ -388,7 +389,7 @@ def top():
 </section>
 
 <section class="rband" id="recruit">
-  <div class="rband__bg stripe tint-dark"><img src="{{P}}{IMG['hands']}" alt="" data-px=".12" loading="lazy"></div>
+  <div class="rband__bg stripe tint-dark"><img src="{{P}}{IMG['rband']}" alt="jokeRのディーラー" data-px=".12" loading="lazy" style="object-position:50% 30%"></div>
   <div class="wrap rband__in">
     <span class="neon" style="text-align:left">Join us!</span>
     <h2 class="pop rband__h" data-reveal><span>ディーラー、</span><br><span>はじめませんか？</span></h2>
@@ -679,7 +680,7 @@ def dealer():
 
 # ===================================================== ACCESS
 def access():
-    body = phead("ACCESS", "アクセス", "store", ["ACCESS"]) + f'''
+    body = phead("ACCESS", "アクセス", "table", ["ACCESS"]) + f'''
 <section class="sec" style="padding-top:50px">
   <div class="wrap">
     <h2 class="h2" data-reveal>店舗情報 <small>SHOP INFO</small></h2>
