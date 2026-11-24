@@ -168,6 +168,48 @@
     }
   });
 
+
+  /* ---------- fast smooth scroll for PAGE TOP and in-page links ---------- */
+  function scrollToY(target) {
+    var start = window.scrollY, dist = target - start;
+    if (reduce || Math.abs(dist) < 2) { window.scrollTo(0, target); return; }
+    var dur = Math.min(1100, Math.max(450, Math.abs(dist) * 0.12));
+    var t0 = null;
+    var ease = function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+    var stop = false;
+    var cancel = function () { stop = true; };
+    window.addEventListener("wheel", cancel, { passive: true, once: true });
+    window.addEventListener("touchstart", cancel, { passive: true, once: true });
+    var done = false, fb, rq;
+    function step() {
+      if (stop || done) return;
+      var now = performance.now();
+      if (t0 === null) t0 = now;
+      var p = Math.min(1, (now - t0) / dur);
+      window.scrollTo(0, start + dist * ease(p));
+      if (p >= 1) { done = true; clearTimeout(fb); return; }
+      cancelAnimationFrame(rq); rq = requestAnimationFrame(step);
+      clearTimeout(fb); fb = setTimeout(step, 40); // keeps going even if frames are throttled
+    }
+    step();
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var id = a.getAttribute("href");
+    var y;
+    if (id === "#" || id === "#top") { y = 0; }
+    else {
+      var el = document.getElementById(id.slice(1));
+      if (!el) return;
+      y = el.getBoundingClientRect().top + window.scrollY - 10;
+    }
+    e.preventDefault();
+    if (doc.classList.contains("is-menu") && hb) hb.click();
+    scrollToY(Math.max(0, y));
+    if (id !== "#") history.replaceState(null, "", id);
+  });
+
   /* ---------- contact form -> mail ---------- */
   var form = document.querySelector("#contact-form");
   if (form) {
