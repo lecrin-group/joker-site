@@ -6,7 +6,7 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261125h"
+VER = "20261125i"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
@@ -208,7 +208,7 @@ def top():
       ("recruit/","RECRUIT","ディーラー・スタッフ募集","未経験OK。資格を持った講師が基本から教えます。", f'<img src="{{P}}{IMG["dealer"]}" alt="" loading="lazy">', "#5dff9d"),
     ]
     pk_html = "".join(f'''<a class="pk" href="{{P}}{h}" style="--nc:{nc}"><div class="pk__img">{art}<span class="pk__no">0{i+1}</span></div><div class="pk__body"><p class="pk__cat">{cat}</p><p class="pk__ttl">{t}</p><p class="pk__txt">{d}</p><span class="pk__go">MORE <i>→</i></span></div></a>''' for i,(h,cat,t,d,art,nc) in enumerate(pickups))
-    bokeh = "".join(f'<i style="--x:{(i*37)%100}%;--y:{(i*53)%100}%;--s:{8+(i*7)%26}px;--d:{6+(i*3)%9}s;--dl:-{(i*1.3)%8:.1f}s;--c:{["#ff2bd6","#3ee8ff","#ffd23f","#5dff9d","#ff4f4f"][i%5]}"></i>' for i in range(22))
+    bokeh = "".join(f'<i style="--x:{(i*37)%100}%;--y:{(i*53)%100}%;--s:{8+(i*7)%26}px;--d:{6+(i*3)%9}s;--dl:-{(i*1.3)%8:.1f}s;--c:{["#ff2bd6","#3ee8ff","#ffd23f","#5dff9d","#ff4f4f"][i%5]}"></i>' for i in range(12))
 
     games_sel = "".join(f'''<a class="game" href="{h}" data-reveal data-delay="{i*0.1:.1f}"><span class="game__en">{en}</span><span class="game__ring">{GAME_SVG[k]}</span><span class="game__jp">・{jp}・</span></a>''' for i,(k,en,jp,h) in enumerate([
         ("bj","BLACKJACK","ブラックジャック","#g-bj"),("bac","BACCARAT","バカラ","#g-bac"),("poker","POKER","ポーカー","#g-poker"),("rl","ROULETTE","ルーレット","#g-rl")]))
@@ -227,7 +227,9 @@ def top():
     body = f'''
 <section class="hero" aria-label="メインビジュアル">
   <div class="hero__media">
-    <video class="hero__video" muted loop playsinline autoplay preload="auto" poster="{{P}}{IMG['table']}" data-wide="{{P}}img/video/hero-wide.mp4" data-tall="{{P}}img/video/hero-tall.mp4" aria-hidden="true"></video>
+    <div class="hero__slide is-on"><video class="hero__video" muted loop playsinline autoplay preload="auto" poster="{{P}}{IMG['table']}" data-wide="{{P}}img/video/hero-wide.mp4" data-tall="{{P}}img/video/hero-tall.mp4" aria-hidden="true"></video></div>
+    <div class="hero__slide"><picture><source media="(max-width:767px) and (orientation:portrait)" srcset="{{P}}img/photo/hero-2-tall.jpg"><img src="{{P}}img/photo/hero-2-wide.jpg" alt="jokeRのテーブルでディーラーがカードを配る様子" loading="lazy"></picture></div>
+    <div class="hero__slide"><picture><source media="(max-width:767px) and (orientation:portrait)" srcset="{{P}}{IMG['room']}"><img src="{{P}}img/photo/hero-3-wide.jpg" alt="赤いカーテンとポーカーテーブルのあるjokeRの店内" loading="lazy"></picture></div>
   </div>
   <div class="hero__shade"></div>
   <div class="fx" aria-hidden="true">
@@ -236,6 +238,7 @@ def top():
     <div class="bokeh">{bokeh}</div>
     <span class="scan"></span><span class="strobe"></span>
   </div>
+  <div class="hero__dots"></div>
   <div class="hero__copy">
     <p class="hero__night" aria-hidden="true">CASINO NIGHT</p>
     <h1 class="hero__title"><span class="nj">立川で、<br class="sp">カジノ遊び。</span></h1>

@@ -74,8 +74,14 @@
       var img = slides[cur].querySelector("img");
       if (img) { img.style.animation = "none"; void img.offsetWidth; img.style.animation = ""; }
       slides[cur].classList.add("is-on"); dots[cur] && dots[cur].classList.add("is-on");
+      slides.forEach(function (sl, i) {
+        var v = sl.querySelector("video");
+        if (!v) return;
+        if (i === cur && !reduce) { try { v.currentTime = 0; } catch (e) {} var pp = v.play(); if (pp && pp.catch) pp.catch(function () {}); }
+        else { v.pause(); }
+      });
     }
-    function restart() { clearInterval(timer); timer = setInterval(function () { go(cur + 1); }, 6000); }
+    function restart() { clearInterval(timer); timer = setInterval(function () { go(cur + 1); }, 7000); }
     dots[0] && dots[0].classList.add("is-on");
     restart();
   }
