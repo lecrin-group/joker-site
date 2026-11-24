@@ -6,7 +6,7 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261125i"
+VER = "20261125m"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
@@ -55,6 +55,11 @@ TEL = "042-512-9385"
 MAIL = "tatikawajoker@gmail.com"
 X_URL = "https://x.com/JokerTachikawa"
 LINE_URL = "https://lin.ee/YkVqiiWJ"
+# 公式SNS（URL が空のものはサイトに出さない。アカウントができたら URL を入れて build し直す）
+INSTAGRAM_URL = "https://www.instagram.com/joker_tachikawa_poker/"
+TIKTOK_URL = ""
+YOUTUBE_URL = ""
+THREADS_URL = ""
 MAP_EMBED = "https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E7%AB%8B%E5%B7%9D%E5%B8%82%E9%8C%A6%E7%94%BA1-2-13&z=17&output=embed"
 MAP_LINK = "https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E7%AB%8B%E5%B7%9D%E5%B8%82%E9%8C%A6%E7%94%BA1-2-13+%E4%B8%AD%E5%B3%B6%E3%83%93%E3%83%AB"
 
@@ -66,6 +71,16 @@ def logo(sub=True):
     s = '<span class="logo" aria-label="jokeR"><span class="logo__word">j<span class="logo__chip"></span>ke<span class="R">R</span></span>'
     if sub: s += '<span class="logo__sub">AMUSEMENT CASINO</span>'
     return s + '</span>'
+
+IC_IG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>'
+IC_TT = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.1v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.7a5.7 5.7 0 1 0 4.9 5.7V9.1a7.3 7.3 0 0 0 4.3 1.4V7.4a4.3 4.3 0 0 1-3.2-1.6z"/></svg>'
+IC_YT = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9l5.8 3.1-5.8 3.1z"/></svg>'
+
+IC_TH = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.7 11.1c-.1 0-.2-.1-.3-.1-.2-3.2-2-5-4.9-5-1.8 0-3.2.8-4.1 2.1l1.6 1.1c.7-1 1.7-1.2 2.5-1.2 1 0 1.8.3 2.2.9.3.4.6 1.1.6 1.8-.9-.2-1.8-.2-2.8-.2-2.8.2-4.6 1.8-4.5 4.1.1 1.2.7 2.2 1.7 2.8.8.5 1.9.8 3 .7 1.5-.1 2.6-.6 3.4-1.7.6-.8 1-1.8 1.1-3.1.7.4 1.2 1 1.5 1.6.5 1.2.5 3.1-1 4.6-1.4 1.4-3 2-5.5 2-2.8 0-4.9-.9-6.2-2.6C4.8 17.1 4.2 15 4.2 12.3s.6-4.8 1.8-6.3C7.4 4.3 9.4 3.4 12.2 3.4s4.9.9 6.3 2.6c.7.9 1.2 1.9 1.5 3.1l1.9-.5c-.4-1.5-1-2.8-1.9-3.9-1.8-2.3-4.4-3.4-7.8-3.4-3.4 0-6 1.2-7.8 3.4C2.8 6.7 2 9.2 2 12.3s.8 5.6 2.4 7.6C6.2 22.2 8.8 23.4 12.2 23.4c3 0 5.1-.8 6.9-2.6 2.4-2.4 2.3-5.3 1.5-7.1-.5-1.3-1.6-2.3-2.9-2.6zm-5.1 4.8c-1.2.1-2.4-.5-2.5-1.5 0-.8.6-1.7 2.5-1.8h.6c.7 0 1.3.1 1.9.2-.2 2.6-1.5 3-2.5 3.1z"/></svg>'
+
+def sns_icons():
+    items = [("Instagram", INSTAGRAM_URL, IC_IG, "ig"), ("TikTok", TIKTOK_URL, IC_TT, "tt"), ("YouTube", YOUTUBE_URL, IC_YT, "yt"), ("Threads", THREADS_URL, IC_TH, "th")]
+    return '<div class="sns-icons">' + "".join(f'<a class="sns-ic {c}" href="{u}" target="_blank" rel="noopener" aria-label="公式{n}">{ic}<span>{n}</span></a>' for n,u,ic,c in items if u) + '</div>'
 
 def nlogo(sub=True):
     s = '<span class="nlogo" aria-label="jokeR"><span class="nlogo__word">j<span class="nlogo__chip"></span>ke<span class="R">R</span></span>'
@@ -127,7 +142,7 @@ def layout(path, title, desc, body, top=False, og="img/photo/store-table.jpg"):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Dela+Gothic+One&family=Monoton&family=Yellowtail&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{P}assets/css/style.css?v={VER}">
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"BarOrPub","name":"立川 jokeR（ジョーカー）","alternateName":"Amusement Bar jokeR","url":"{SITE}/","telephone":"{TEL}","email":"{MAIL}","image":"{SITE}/img/photo/store-table.jpg","address":{{"@type":"PostalAddress","postalCode":"190-0022","addressRegion":"東京都","addressLocality":"立川市","streetAddress":"錦町1-2-13 中島ビル2F","addressCountry":"JP"}},"openingHours":"Mo-Su 17:00-23:00","sameAs":["{X_URL}"]}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"BarOrPub","name":"立川 jokeR（ジョーカー）","alternateName":"Amusement Bar jokeR","url":"{SITE}/","telephone":"{TEL}","email":"{MAIL}","image":"{SITE}/img/photo/store-table.jpg","address":{{"@type":"PostalAddress","postalCode":"190-0022","addressRegion":"東京都","addressLocality":"立川市","streetAddress":"錦町1-2-13 中島ビル2F","addressCountry":"JP"}},"openingHours":"Mo-Su 17:00-23:00","sameAs":[{",".join('"'+u+'"' for u in [X_URL, INSTAGRAM_URL, TIKTOK_URL, YOUTUBE_URL, THREADS_URL] if u)}]}}</script>
 </head>
 <body class="{'is-top' if top else 'is-sub'}">
 {loader}
@@ -138,6 +153,7 @@ def layout(path, title, desc, body, top=False, og="img/photo/store-table.jpg"):
     <a href="{u('')}" class="menu__logo">{nlogo()}</a>
     <ul class="menu__list">{navmenu}</ul>
     <div class="menu__sns"><a class="xb" href="{X_URL}" target="_blank" rel="noopener">{IC_X} 公式X</a><a class="lineb" href="{LINE_URL}" target="_blank" rel="noopener">{IC_LINE} 公式LINE</a><a class="xb" href="tel:{TEL}">{IC_TEL} {TEL}</a></div>
+    {sns_icons()}
   </div>
 </nav>
 <nav class="gnav" aria-label="サイト内">
@@ -148,7 +164,7 @@ def layout(path, title, desc, body, top=False, og="img/photo/store-table.jpg"):
 {body.replace("{P}", P)}
 </main>
 {footer(P, u)}
-<a class="totop" href="#">PAGE<br>TOP</a>
+<a class="totop" href="#" aria-label="ページの先頭へ"><span><i>▲</i>TOP</span></a>
 <div class="spcta"><a href="tel:{TEL}">{IC_TEL} 電話する</a><a href="{LINE_URL}" target="_blank" rel="noopener">{IC_LINE} LINE</a></div>
 <script src="{P}assets/js/main.js?v={VER}" defer></script>
 </body>
@@ -160,9 +176,14 @@ def layout(path, title, desc, body, top=False, og="img/photo/store-table.jpg"):
 
 def footer(P, u):
     nav = "".join(f'<a href="{u(p)}">{en}</a>' for p,en,jp,s in NAV)
-    marq = "".join("<span>jokeR AMUSEMENT CASINO BAR —</span>" for _ in range(4))
+    marq = "".join('<svg class="mqs" height="1" width="1"><text x="2" y="50%" dominant-baseline="central">jokeR AMUSEMENT CASINO BAR —</text></svg>' for _ in range(4))
+    marq_defs = '''<svg class="mq-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
+<linearGradient id="mqGrad" x1="0" y1="0" x2="1" y2="0" spreadMethod="repeat">
+<stop offset="0" stop-color="#ff2bd6"/><stop offset=".25" stop-color="#3ee8ff"/><stop offset=".5" stop-color="#ffd23f"/><stop offset=".75" stop-color="#5dff9d"/><stop offset="1" stop-color="#ff2bd6"/>
+<animateTransform attributeName="gradientTransform" type="translate" from="0 0" to="1 0" dur="5s" repeatCount="indefinite"/>
+</linearGradient></defs></svg>'''
     return f'''<footer class="foot">
-  <div class="foot__marq" aria-hidden="true"><div class="band__row">{marq}</div></div>
+  <div class="foot__marq" aria-hidden="true">{marq_defs}<div class="band__row">{marq}</div></div>
   <div class="wrap">
     <div class="foot__grid">
       <div>
@@ -172,6 +193,7 @@ def footer(P, u):
       <nav class="foot__nav" aria-label="フッター">{nav}</nav>
       <div>
         <div class="foot__sns"><a class="xb" href="{X_URL}" target="_blank" rel="noopener">{IC_X} 公式X</a><a class="lineb" href="{LINE_URL}" target="_blank" rel="noopener">{IC_LINE} 公式LINE</a></div>
+        {sns_icons()}
         <div class="foot__sister">リンク紹介<a href="https://hearts-gekijo.jp/" target="_blank" rel="noopener">HeaRTS劇場 ドン・キホーテ立川店<br><small>エンターテイメントレストラン</small></a></div>
       </div>
     </div>

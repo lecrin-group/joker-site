@@ -785,3 +785,37 @@ html{overflow-x:clip}
   linear-gradient(180deg,rgba(5,4,10,.5),rgba(5,4,10,0) 30%),
   linear-gradient(120deg,rgba(255,43,214,.14),rgba(62,232,255,.08) 50%,rgba(139,91,255,.14))}
 .scan{opacity:.6}
+
+/* logo "o" = red/white casino chip image (2026-11-25) */
+.nlogo__chip{background:url(../../img/chip-red.png) center/contain no-repeat;box-shadow:none;
+  filter:drop-shadow(0 0 4px rgba(255,31,69,.9)) drop-shadow(0 0 12px rgba(255,31,69,.6));width:.6em;height:.6em;top:.06em;animation:spin 8s linear infinite}
+.nlogo__chip::after{content:none}
+
+/* footer marquee: outline only, gradient stroke (2026-11-25 v2) */
+.foot__marq{background:none}
+.mq-defs{position:absolute;width:0;height:0;overflow:hidden}
+.foot__marq .band__row{align-items:center}
+.mqs{display:block;flex:none;height:clamp(84px,12.5vw,180px);overflow:visible;margin-right:.2em}
+.mqs text{font-family:var(--f-en);font-size:clamp(70px,11vw,160px);letter-spacing:.01em;fill:none;stroke:url(#mqGrad);stroke-width:1.6px;paint-order:stroke;
+  filter:drop-shadow(0 0 3px rgba(255,255,255,.18))}
+
+/* official SNS icons */
+.sns-icons{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.sns-ic{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px 0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.35);font-size:13px;font-weight:700;letter-spacing:.06em;transition:transform .2s,box-shadow .25s,background .25s,border-color .25s}
+.sns-ic:hover{transform:translateY(-2px)}
+.sns-ic.ig:hover{background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);border-color:transparent;box-shadow:0 0 18px rgba(214,41,118,.6)}
+.sns-ic.tt:hover{background:#000;border-color:#25f4ee;box-shadow:-3px 0 0 #25f4ee,3px 0 0 #fe2c55}
+.sns-ic.yt:hover{background:#ff0033;border-color:#ff0033;box-shadow:0 0 18px rgba(255,0,51,.6)}
+.foot .sns-icons{margin-top:12px}
+.sns-ic.th:hover{background:#fff;color:#000;border-color:#fff;box-shadow:0 0 16px rgba(255,255,255,.5)}
+
+/* PAGE TOP = casino chip (2026-11-25) */
+.totop{width:70px;height:70px;border-radius:50%;background:none;color:#b3111e;font-family:var(--f-en);font-size:12px;letter-spacing:.08em;line-height:1;
+  display:grid;place-items:center;text-align:center;filter:drop-shadow(0 6px 14px rgba(0,0,0,.55)) drop-shadow(0 0 10px rgba(255,31,69,.45))}
+.totop::before{content:"";position:absolute;inset:0;border-radius:50%;background:url(../../img/chip-red.png) center/contain no-repeat;transform:rotate(var(--spin,0deg));transition:transform .15s linear}
+.totop span{position:relative;display:block;font-weight:400}
+.totop span i{display:block;font-style:normal;font-size:15px;margin-bottom:1px}
+.totop:hover::before{animation:chipFlip .7s var(--ease)}
+.totop:hover{filter:drop-shadow(0 8px 18px rgba(0,0,0,.6)) drop-shadow(0 0 16px rgba(255,31,69,.8))}
+@keyframes chipFlip{0%{transform:rotate(var(--spin,0deg)) rotateY(0)}100%{transform:rotate(var(--spin,0deg)) rotateY(360deg)}}
+@media (max-width:767px){.totop{width:56px;height:56px;font-size:10px}.totop span i{font-size:12px}}

@@ -106,6 +106,17 @@
     el.innerHTML = html;
   });
 
+  /* ---------- footer marquee: size each svg to its text ---------- */
+  function fitMarq() {
+    document.querySelectorAll(".mqs").forEach(function (svg) {
+      var t = svg.querySelector("text"); if (!t) return;
+      try { var w = t.getComputedTextLength(); if (w > 0) svg.setAttribute("width", Math.ceil(w + 8)); } catch (e) {}
+    });
+  }
+  fitMarq();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMarq);
+  window.addEventListener("resize", fitMarq);
+
   /* ---------- reveal on scroll ---------- */
   var targets = document.querySelectorAll("[data-reveal],.wipe,.pop-in");
   if ("IntersectionObserver" in window && !reduce) {
@@ -135,7 +146,7 @@
       el.style.transform = "translate3d(0," + off.toFixed(1) + "px,0) rotate(" + (rot + off * 0.06).toFixed(2) + "deg)";
     });
     var tt = document.querySelector(".totop");
-    if (tt) tt.classList.toggle("is-show", y > vh * 0.8);
+    if (tt) { tt.classList.toggle("is-show", y > vh * 0.8); tt.style.setProperty("--spin", (y * 0.25 % 360).toFixed(1) + "deg"); }
     ticking = false;
   }
   if (!reduce) {
