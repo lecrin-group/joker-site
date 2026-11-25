@@ -6,7 +6,7 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261125r"
+VER = "20261125s"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
@@ -80,7 +80,11 @@ IC_TH = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" ari
 
 def sns_icons():
     items = [("Instagram", INSTAGRAM_URL, IC_IG, "ig"), ("TikTok", TIKTOK_URL, IC_TT, "tt"), ("YouTube", YOUTUBE_URL, IC_YT, "yt"), ("Threads", THREADS_URL, IC_TH, "th")]
-    return '<div class="sns-icons">' + "".join(f'<a class="sns-ic {c}" href="{u}" target="_blank" rel="noopener" aria-label="公式{n}">{ic}<span>{n}</span></a>' for n,u,ic,c in items if u) + '</div>'
+    # URL が空のものもボタンは出す（リンク先は未設定。URL を入れて build し直せばつながる）
+    def a(n,u,ic,c):
+        if u: return f'<a class="sns-ic {c}" href="{u}" target="_blank" rel="noopener" aria-label="公式{n}">{ic}<span>{n}</span></a>'
+        return f'<a class="sns-ic {c} is-todo" href="#" aria-disabled="true" aria-label="公式{n}（準備中）">{ic}<span>{n}</span></a>'
+    return '<div class="sns-icons">' + "".join(a(*it) for it in items) + '</div>'
 
 def nlogo(sub=True):
     s = '<span class="nlogo" aria-label="jokeR"><span class="nlogo__word">j<span class="nlogo__chip"></span>ke<span class="R">R</span></span>'

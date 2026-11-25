@@ -232,6 +232,7 @@
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest('a[href^="#"]');
     if (!a) return;
+    if (a.classList.contains("is-todo")) { e.preventDefault(); return; } // SNS: リンク先が未設定のボタン
     var id = a.getAttribute("href");
     var y;
     if (id === "#" || id === "#top") { y = 0; }
