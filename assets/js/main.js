@@ -64,7 +64,10 @@
   var hv = document.querySelector(".hero__video");
   if (hv) {
     var pick = function () { return window.innerWidth < 768 && window.innerHeight > window.innerWidth ? hv.dataset.tall : hv.dataset.wide; };
-    if (reduce) { hv.removeAttribute("autoplay"); }
+    /* 省データ設定・遅い回線のときは動画を読みこまず、静止画（poster）のままにする */
+    var net = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    var slow = !!(net && (net.saveData || /(^|-)(2g|3g)$/.test(net.effectiveType || "")));
+    if (reduce || slow) { hv.removeAttribute("autoplay"); hv.removeAttribute("data-wide"); hv.removeAttribute("data-tall"); hv.preload = "none"; }
     else {
       hv.src = pick();
       var p = hv.play(); if (p && p.catch) p.catch(function () {});
@@ -135,6 +138,22 @@
   fitMarq();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitMarq);
   window.addEventListener("resize", fitMarq);
+
+
+  /* ---------- performance: pause animations in sections that are off screen ---------- */
+  if ("IntersectionObserver" in window) {
+    var heavy = document.querySelectorAll(".hero, .brand, .gsec, .foot__marq, .select__frame, .pickup, #news, .intro, .rband");
+    var po = new IntersectionObserver(function (ents) {
+      ents.forEach(function (en) {
+        en.target.classList.toggle("is-off", !en.isIntersecting);
+        if (en.target.classList.contains("hero")) {
+          var v = en.target.querySelector(".is-on video");
+          if (v) { if (en.isIntersecting) { var pp = v.play(); if (pp && pp.catch) pp.catch(function () {}); } else { v.pause(); } }
+        }
+      });
+    }, { rootMargin: "120px 0px" });
+    heavy.forEach(function (el) { po.observe(el); });
+  }
 
   /* ---------- reveal on scroll ---------- */
   var targets = document.querySelectorAll("[data-reveal],.wipe,.pop-in");
