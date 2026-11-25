@@ -824,3 +824,24 @@ html{overflow-x:clip}
 .menu{overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;width:100%;max-width:100vw}
 @supports (overflow:clip){.menu{overflow-x:clip}}
 .menu__body,.menu__list,.menu__sns{max-width:100%;min-width:0}
+
+/* ---- menu: スマホ版の演出（上に写真・ボタンから円で開く・タップで光る） ---- */
+.menu__list li:nth-child(5n+1){--nc:var(--n-pink)}.menu__list li:nth-child(5n+2){--nc:var(--n-cyan)}.menu__list li:nth-child(5n+3){--nc:var(--n-yellow)}.menu__list li:nth-child(5n+4){--nc:var(--n-green)}.menu__list li:nth-child(5n){--nc:var(--n-purple)}
+@keyframes tapGlow{0%{color:transparent;-webkit-text-stroke-color:rgba(255,255,255,.85);text-shadow:none}
+  25%{color:#fff;-webkit-text-stroke-color:#fff;text-shadow:0 0 8px #fff,0 0 22px var(--nc),0 0 48px var(--nc)}
+  45%{color:transparent;text-shadow:0 0 4px var(--nc)}
+  65%,100%{color:#fff;-webkit-text-stroke-color:#fff;text-shadow:0 0 8px #fff,0 0 22px var(--nc),0 0 48px var(--nc)}}
+.menu__list a.is-flash b{animation:tapGlow .5s ease-out forwards}
+.menu__list a.is-flash small{color:var(--nc);text-shadow:0 0 8px var(--nc)}
+.hb.is-press .hb__lines span,.hb.is-press .hb__lines::after{width:28px}
+.hb.is-press{transform:scale(1.06)}
+@keyframes menuZoom{from{transform:scale(1.15)}to{transform:scale(1)}}
+@media (max-width:767px){
+  .menu{clip-path:circle(0 at calc(100% - 40px) 40px);grid-template-rows:auto 1fr;align-content:start}
+  .is-menu .menu{clip-path:circle(150% at calc(100% - 40px) 40px)}
+  .menu__img{display:block;height:30svh;min-height:180px}
+  .menu__img::after{background:linear-gradient(180deg,transparent 35%,#07060c),linear-gradient(160deg,rgba(255,43,214,.35),rgba(62,232,255,.25))}
+  .is-menu .menu__img img{animation:menuZoom 6s var(--ease) both}
+  .menu__body{padding-top:0;margin-top:-28px;justify-content:flex-start}
+  .menu__logo{margin-bottom:12px}
+}

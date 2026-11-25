@@ -6,7 +6,7 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261125o"
+VER = "20261125p"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
@@ -148,7 +148,7 @@ def layout(path, title, desc, body, top=False, og="img/photo/store-table.jpg"):
 {loader}
 <button class="hb" type="button" aria-label="メニュー" aria-expanded="false" aria-controls="menu"><i class="hb__ring"></i><span class="hb__lines"><span></span></span><b class="hb__txt">MENU</b></button>
 <nav class="menu" id="menu" aria-label="メニュー">
-  <div class="menu__img"><img src="{P}{IMG['room']}" alt="" loading="lazy"></div>
+  <div class="menu__img"><img src="{P}{IMG['room']}" alt="" loading="lazy" decoding="async"></div>
   <div class="menu__body">
     <a href="{u('')}" class="menu__logo">{nlogo()}</a>
     <ul class="menu__list">{navmenu}</ul>

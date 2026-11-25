@@ -28,13 +28,32 @@
   /* ---------- hamburger menu ---------- */
   var hb = document.querySelector(".hb");
   if (hb) {
-    hb.addEventListener("click", function () {
+    var touch = window.matchMedia("(hover: none)").matches;
+    var toggleMenu = function () {
       var open = doc.classList.toggle("is-menu");
       hb.setAttribute("aria-expanded", open ? "true" : "false");
       document.body.style.overflow = open ? "hidden" : "";
+    };
+    hb.addEventListener("click", function () {
+      /* スマホ：PC のホバーと同じく線が伸びてから開く */
+      if (touch && !doc.classList.contains("is-menu")) {
+        hb.classList.add("is-press");
+        setTimeout(function () { hb.classList.remove("is-press"); toggleMenu(); }, 220);
+      } else { toggleMenu(); }
     });
+    var closeMenu = function () { doc.classList.remove("is-menu"); hb.setAttribute("aria-expanded", "false"); document.body.style.overflow = ""; };
     document.querySelectorAll(".menu a").forEach(function (a) {
-      a.addEventListener("click", function () { doc.classList.remove("is-menu"); document.body.style.overflow = ""; });
+      a.addEventListener("click", function (e) {
+        /* スマホ：メニューの文字が各色で光ってから移動 */
+        if (touch && a.closest(".menu__list") && !e.metaKey && !e.ctrlKey) {
+          e.preventDefault();
+          if (a.classList.contains("is-flash")) return;
+          a.classList.add("is-flash");
+          setTimeout(function () { closeMenu(); location.href = a.href; setTimeout(function () { a.classList.remove("is-flash"); }, 400); }, 520);
+          return;
+        }
+        closeMenu();
+      });
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && doc.classList.contains("is-menu")) hb.click();
