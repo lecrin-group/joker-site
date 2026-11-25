@@ -882,3 +882,12 @@ html{overflow-x:clip}
   box-shadow:-2.5px 0 0 #fff,2.5px 0 0 #fff,-5px 0 0 #08070d,5px 0 0 #08070d,-7.5px 0 0 #fff,7.5px 0 0 #fff,0 4px 14px rgba(0,0,0,.35)}
 .menu__sns .xb.is-x:hover,.foot__sns .xb.is-x:hover{
   box-shadow:-2.5px 0 0 #fff,2.5px 0 0 #fff,-5px 0 0 #08070d,5px 0 0 #08070d,-7.5px 0 0 #fff,7.5px 0 0 #fff,-10px 0 18px -6px #fff,10px 0 18px -6px #fff,0 6px 18px rgba(0,0,0,.45)}
+
+/* SNS / contact buttons: one uniform size (2026-11-25) */
+.menu__sns,.foot__sns,.sns-icons{display:grid;grid-template-columns:repeat(2,minmax(0,170px));gap:12px 14px;align-items:center;justify-content:start}
+.menu__sns+.sns-icons,.foot__sns+.sns-icons{margin-top:12px}
+.menu__sns a,.foot__sns a,.sns-icons a{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;height:46px;min-width:0;padding:0 12px;margin:0;
+  border-radius:999px;font-size:13.5px;font-weight:700;letter-spacing:.05em;white-space:nowrap}
+.menu__sns a svg,.foot__sns a svg,.sns-icons a svg{width:18px;height:18px;flex:none}
+.menu__sns .xb.is-x,.foot__sns .xb.is-x{margin:0}
+@media (max-width:380px){.menu__sns,.foot__sns,.sns-icons{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
