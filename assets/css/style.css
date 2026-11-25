@@ -893,36 +893,8 @@ html{overflow-x:clip}
 @media (max-width:380px){.menu__sns,.foot__sns,.sns-icons{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
 
 /* =========================================================
-   PERFORMANCE: lighter on phones / touch devices (2026-11-25)
+   PERFORMANCE (見た目は変えない)：画面に見えていない区画のアニメーションは止める（JS が .is-off を付ける）
    ========================================================= */
-/* animations pause while their section is off screen (JS adds .is-off) */
 .is-off,.is-off *,.is-off *::before,.is-off *::after{animation-play-state:paused!important}
-
-@media (max-width:767px),(hover:none){
-  /* frosted glass -> plain translucent (backdrop blur is very costly on phones) */
-  *{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
-  .gnav a:not(.gnav__logo),.hb,.hero__tag span,.hero__first,.slider__arrow{background:rgba(8,6,14,.82)}
-  .pk{background:rgba(18,16,28,.94)}
-  .nbox{background:rgba(14,12,22,.94)}
-  /* big blurred moving lights -> one static gradient */
-  .club__lights{display:none}
-  .club{background:
-    radial-gradient(60% 40% at 0% 10%,rgba(255,43,214,.18),transparent 70%),
-    radial-gradient(60% 40% at 100% 40%,rgba(62,232,255,.14),transparent 70%),
-    radial-gradient(60% 40% at 20% 75%,rgba(139,91,255,.16),transparent 70%),#09080f}
-  .club__spot{display:none}
-  .menu::before{animation:none;filter:none;opacity:.7}
-  /* hero effects: keep the look, drop the expensive parts */
-  .beam{filter:none;opacity:.14}
-  .bokeh{display:none}
-  .laser.l2{display:none}
-  .scan{display:none}
-  /* drop-shadow filters on things that keep moving */
-  .hb__ring{filter:none;box-shadow:0 0 10px rgba(255,43,214,.6)}
-  .nframe::before{filter:none}
-  .nlogo__chip{filter:none}
-  .mqs text{filter:none}
-  .brand__sign::before{filter:none}
-  .pk::before{animation:none;opacity:.7}
-  .neon{animation:none}
-}
+/* 見た目は変えない：常に動くものを GPU に任せてなめらかに */
+.band__row,.hb__ring,.nlogo__chip,.totop::before{will-change:transform}

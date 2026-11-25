@@ -64,9 +64,9 @@
   var hv = document.querySelector(".hero__video");
   if (hv) {
     var pick = function () { return window.innerWidth < 768 && window.innerHeight > window.innerWidth ? hv.dataset.tall : hv.dataset.wide; };
-    /* 省データ設定・遅い回線のときは動画を読みこまず、静止画（poster）のままにする */
+    /* 端末が「省データ」設定のときは動画を読みこまず、静止画（poster）のままにする */
     var net = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-    var slow = !!(net && (net.saveData || /(^|-)(2g|3g)$/.test(net.effectiveType || "")));
+    var slow = !!(net && net.saveData); // 端末の「省データ」設定のときだけ（回線の推定は当てにならないので使わない）
     if (reduce || slow) { hv.removeAttribute("autoplay"); hv.removeAttribute("data-wide"); hv.removeAttribute("data-tall"); hv.preload = "none"; }
     else {
       hv.src = pick();
