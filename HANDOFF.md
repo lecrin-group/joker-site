@@ -54,6 +54,7 @@
 
 ## これまで
 
+- 2026-11-25 メニュー画面とフッターの SNS ボタンを、TikTok と同じ形にそろえた（中は黒、左右のふち「（ ）」だけ各 SNS の色。X 白・LINE 緑・Instagram オレンジ→紫・TikTok 水色→ピンク・YouTube 赤・Threads 白→グレー）
 - 2026-11-25 joker.lecrin.biz の DNS が反映。以後の確認はこの URL で（店長確認まで ID・パスワードの鍵つき）。casino-joker.jp への移し替えは完成後
 - 2026-11-25 TikTok・YouTube のボタンも出した（リンク先は未設定。押しても何も起きない。`_tools/build.py` の `TIKTOK_URL`・`YOUTUBE_URL` に URL を入れて build すればつながる）
 - 2026-11-25 SNS ボタンをすべてブランドの色に（X 黒・LINE 緑・Instagram グラデーション・TikTok 黒・YouTube 赤・Threads 黒）。Threads を追加（Instagram と同じ ID）。YouTube・TikTok は URL 待ち

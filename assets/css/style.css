@@ -862,3 +862,18 @@ html{overflow-x:clip}
 
 /* トップ中間の流れる文字（フッターと同じ・逆向き） */
 .mid-marq{padding:clamp(18px,3vw,36px) 0;border-top:1px solid rgba(255,255,255,.08)}
+
+/* SNS buttons: black pill + brand-colored "( )" edges, like TikTok (2026-11-25) */
+.menu__sns .xb,.menu__sns .lineb,.foot__sns .xb,.foot__sns .lineb,.sns-ic{
+  background:#0b0b10;color:#fff;border:0;--l:#fff;--r:#fff;
+  box-shadow:-2.5px 0 0 var(--l),2.5px 0 0 var(--r),0 4px 14px rgba(0,0,0,.35);
+  transition:transform .2s,box-shadow .3s,filter .2s}
+.menu__sns .lineb,.foot__sns .lineb{--l:#06c755;--r:#06c755}
+.sns-ic.ig{--l:#fdb045;--r:#a33bc2}
+.sns-ic.tt{--l:#25f4ee;--r:#fe2c55}
+.sns-ic.yt{--l:#ff0033;--r:#ff0033}
+.sns-ic.th{--l:#fff;--r:#9a9a9a}
+.menu__sns a:hover,.foot__sns a:hover,.sns-ic:hover{background:#0b0b10;color:#fff;filter:none;transform:translateY(-2px);
+  box-shadow:-3px 0 0 var(--l),3px 0 0 var(--r),-6px 0 18px -6px var(--l),6px 0 18px -6px var(--r),0 6px 18px rgba(0,0,0,.45)}
+.sns-icons .sns-ic{background:#0b0b10;box-shadow:-2.5px 0 0 var(--l),2.5px 0 0 var(--r),0 4px 14px rgba(0,0,0,.35)}
+.sns-icons .sns-ic:hover{background:#0b0b10;box-shadow:-3px 0 0 var(--l),3px 0 0 var(--r),-6px 0 18px -6px var(--l),6px 0 18px -6px var(--r),0 6px 18px rgba(0,0,0,.45)}
