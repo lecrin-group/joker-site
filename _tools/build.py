@@ -6,7 +6,7 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261125y"
+VER = "20261125z"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
