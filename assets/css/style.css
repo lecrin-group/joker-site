@@ -877,3 +877,8 @@ html{overflow-x:clip}
   box-shadow:-3px 0 0 var(--l),3px 0 0 var(--r),-6px 0 18px -6px var(--l),6px 0 18px -6px var(--r),0 6px 18px rgba(0,0,0,.45)}
 .sns-icons .sns-ic{background:#0b0b10;box-shadow:-2.5px 0 0 var(--l),2.5px 0 0 var(--r),0 4px 14px rgba(0,0,0,.35)}
 .sns-icons .sns-ic:hover{background:#0b0b10;box-shadow:-3px 0 0 var(--l),3px 0 0 var(--r),-6px 0 18px -6px var(--l),6px 0 18px -6px var(--r),0 6px 18px rgba(0,0,0,.45)}
+/* X: double "(( ))" edges like the X logo */
+.menu__sns .xb.is-x,.foot__sns .xb.is-x{margin:0 6px;
+  box-shadow:-2.5px 0 0 #fff,2.5px 0 0 #fff,-5px 0 0 #08070d,5px 0 0 #08070d,-7.5px 0 0 #fff,7.5px 0 0 #fff,0 4px 14px rgba(0,0,0,.35)}
+.menu__sns .xb.is-x:hover,.foot__sns .xb.is-x:hover{
+  box-shadow:-2.5px 0 0 #fff,2.5px 0 0 #fff,-5px 0 0 #08070d,5px 0 0 #08070d,-7.5px 0 0 #fff,7.5px 0 0 #fff,-10px 0 18px -6px #fff,10px 0 18px -6px #fff,0 6px 18px rgba(0,0,0,.45)}

@@ -6,7 +6,7 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261125t"
+VER = "20261125u"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
@@ -156,7 +156,7 @@ def layout(path, title, desc, body, top=False, og="img/photo/store-table.jpg"):
   <div class="menu__body">
     <a href="{u('')}" class="menu__logo">{nlogo()}</a>
     <ul class="menu__list">{navmenu}</ul>
-    <div class="menu__sns"><a class="xb" href="{X_URL}" target="_blank" rel="noopener">{IC_X} 公式X</a><a class="lineb" href="{LINE_URL}" target="_blank" rel="noopener">{IC_LINE} 公式LINE</a><a class="xb" href="tel:{TEL}">{IC_TEL} {TEL}</a></div>
+    <div class="menu__sns"><a class="xb is-x" href="{X_URL}" target="_blank" rel="noopener">{IC_X} 公式X</a><a class="lineb" href="{LINE_URL}" target="_blank" rel="noopener">{IC_LINE} 公式LINE</a><a class="xb" href="tel:{TEL}">{IC_TEL} {TEL}</a></div>
     {sns_icons()}
   </div>
 </nav>
@@ -198,7 +198,7 @@ def footer(P, u):
       </div>
       <nav class="foot__nav" aria-label="フッター">{nav}</nav>
       <div>
-        <div class="foot__sns"><a class="xb" href="{X_URL}" target="_blank" rel="noopener">{IC_X} 公式X</a><a class="lineb" href="{LINE_URL}" target="_blank" rel="noopener">{IC_LINE} 公式LINE</a></div>
+        <div class="foot__sns"><a class="xb is-x" href="{X_URL}" target="_blank" rel="noopener">{IC_X} 公式X</a><a class="lineb" href="{LINE_URL}" target="_blank" rel="noopener">{IC_LINE} 公式LINE</a></div>
         {sns_icons()}
         <div class="foot__sister">リンク紹介<a href="https://hearts-gekijo.jp/" target="_blank" rel="noopener">HeaRTS劇場 ドン・キホーテ立川店<br><small>エンターテイメントレストラン</small></a></div>
       </div>
