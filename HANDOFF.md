@@ -1,6 +1,7 @@
 # HANDOFF — jokeR 立川 公式サイト（新）
 
-公開先：https://joker.lecrin.biz （Xserver。GitHub から自動アップ）／ 旧サイト：https://casino-joker.jp/
+公開先（仮置き）：https://joker.lecrin.biz （ナギサの Xserver・ナギサのサブドメインをお店に一時的に貸している。GitHub から自動アップ）
+本当の本番：お店のドメイン casino-joker.jp。完成したらここへ移す（課題シート jokeR_課題 No.41）。移すときは deploy.yml の上げ先と build.py の SITE（canonical・OGP・sitemap）を書き換える／ 旧サイト：https://casino-joker.jp/
 リポジトリ：https://github.com/lecrin-group/joker-site
 公開のしかた：main に push すると `.github/workflows/deploy.yml` が FTP で Xserver の joker.lecrin.biz のフォルダへ自動アップ（他のサイトと同じ形。見本は hearts-recruit）。DNS はさわらない（Xserver でサブドメインを作ったときの A レコードのまま）
 - Secrets：FTP_SERVER = sv8695.xserver.jp ／ FTP_USERNAME = github-joker@lecrin.biz（jokeR 専用。joker.lecrin.biz のフォルダにしか入れない）／ FTP_PASSWORD（ナギサが管理）／ FTP_SERVER_DIR = ./
@@ -53,6 +54,7 @@
 
 ## これまで
 
+- 2026-11-25 joker.lecrin.biz の DNS が反映。以後の確認はこの URL で（店長確認まで ID・パスワードの鍵つき）。casino-joker.jp への移し替えは完成後
 - 2026-11-25 TikTok・YouTube のボタンも出した（リンク先は未設定。押しても何も起きない。`_tools/build.py` の `TIKTOK_URL`・`YOUTUBE_URL` に URL を入れて build すればつながる）
 - 2026-11-25 SNS ボタンをすべてブランドの色に（X 黒・LINE 緑・Instagram グラデーション・TikTok 黒・YouTube 赤・Threads 黒）。Threads を追加（Instagram と同じ ID）。YouTube・TikTok は URL 待ち
 - 2026-11-25 ブラックジャック区画の写真を、赤い台でカードを配る手元（casino-dealer.jpg）に差し替え。店長確認のため Xserver のアクセス制限を ON（401 になることを確認）
