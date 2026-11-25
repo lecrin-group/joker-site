@@ -896,8 +896,6 @@ html{overflow-x:clip}
    PERFORMANCE (見た目は変えない)：画面に見えていない区画のアニメーションは止める（JS が .is-off を付ける）
    ========================================================= */
 .is-off,.is-off *,.is-off *::before,.is-off *::after{animation-play-state:paused!important}
-/* 見た目は変えない：常に動くものを GPU に任せてなめらかに */
-.band__row,.hb__ring,.nlogo__chip,.totop::before{will-change:transform}
 
 /* small logos (top-left / menu): tighter glow so the letters stay sharp (2026-11-25) */
 .gnav .nlogo__word,.menu__logo .nlogo__word{
