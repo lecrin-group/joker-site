@@ -820,6 +820,20 @@ html{overflow-x:clip}
 @keyframes chipFlip{0%{transform:rotate(var(--spin,0deg)) rotateY(0)}100%{transform:rotate(var(--spin,0deg)) rotateY(360deg)}}
 @media (max-width:767px){.totop{width:56px;height:56px;font-size:10px}.totop span i{font-size:12px}}
 
+/* SNS buttons: always in brand colors (2026-11-25) */
+.sns-ic{color:#fff;border:0;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.sns-ic.ig{background:linear-gradient(45deg,#feda75 0%,#fa7e1e 25%,#d62976 50%,#962fbf 75%,#4f5bd5 100%)}
+.sns-ic.tt{background:#000;box-shadow:-2px 0 0 #25f4ee,2px 0 0 #fe2c55,0 4px 14px rgba(0,0,0,.35)}
+.sns-ic.yt{background:#ff0033}
+.sns-ic.th{background:#000;box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),0 4px 14px rgba(0,0,0,.35)}
+.sns-ic:hover{transform:translateY(-2px);filter:brightness(1.12)}
+.sns-ic.ig:hover{box-shadow:0 0 18px rgba(214,41,118,.7)}
+.sns-ic.yt:hover{box-shadow:0 0 18px rgba(255,0,51,.7)}
+.sns-ic.th:hover{background:#000;color:#fff;box-shadow:inset 0 0 0 1px #fff,0 0 16px rgba(255,255,255,.45)}
+.xb{background:#000;color:#fff;border:1px solid rgba(255,255,255,.75)}
+.menu__sns{align-items:center}
+.foot__sns{flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px}
+.menu .sns-icons{margin-top:12px}
 /* ---- menu: 横ブレ防止（縦だけスクロール） ---- */
 .menu{overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;width:100%;max-width:100vw}
 @supports (overflow:clip){.menu{overflow-x:clip}}

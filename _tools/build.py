@@ -6,7 +6,7 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261125q"
+VER = "20261125r"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
@@ -59,7 +59,7 @@ LINE_URL = "https://lin.ee/YkVqiiWJ"
 INSTAGRAM_URL = "https://www.instagram.com/joker_tachikawa_poker/"
 TIKTOK_URL = ""
 YOUTUBE_URL = ""
-THREADS_URL = ""
+THREADS_URL = "https://www.threads.com/@joker_tachikawa_poker"
 MAP_EMBED = "https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E7%AB%8B%E5%B7%9D%E5%B8%82%E9%8C%A6%E7%94%BA1-2-13&z=17&output=embed"
 MAP_LINK = "https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E7%AB%8B%E5%B7%9D%E5%B8%82%E9%8C%A6%E7%94%BA1-2-13+%E4%B8%AD%E5%B3%B6%E3%83%93%E3%83%AB"
 
@@ -355,7 +355,7 @@ def top():
   </div>
 </section>
 
-{gsec("g-bj","c-red","BLACKJACK","ブラックジャック","bjreal","ディーラーとプレイヤー（自分）が対戦するゲーム。ルールは簡単、2枚以上のカードの合計が「21」に近いほうが勝ち。ただし「22」以上になったら即負け！","casino-games/black-jack/", tall=True, wipe="#111")}
+{gsec("g-bj","c-red","BLACKJACK","ブラックジャック","hands","ディーラーとプレイヤー（自分）が対戦するゲーム。ルールは簡単、2枚以上のカードの合計が「21」に近いほうが勝ち。ただし「22」以上になったら即負け！","casino-games/black-jack/", wipe="#111")}
 {gsec("g-bac","c-gold","BACCARAT","バカラ","baccarat","「バンカー」と「プレイヤー」の仮想の二人の勝負で、どちらが勝つかを予想して賭けるゲーム。2〜3枚のカードの合計点数の下一桁が、9に近い方が勝ちです。","casino-games/baccarat/", tall=True, wipe="#111")}
 {gsec("g-poker","c-green","POKER","テキサス・ホールデム","poker","ポーカーの一種。各プレイヤーに配られる2枚の手札と、全員共通の「コミュニティ・カード」を組み合わせて役をつくり勝負します。毎週の大会も開催中！","casino-games/texas-holdem/", wipe="#111")}
 <section class="gsec c-dark" id="g-rl">
