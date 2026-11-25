@@ -898,3 +898,12 @@ html{overflow-x:clip}
 .is-off,.is-off *,.is-off *::before,.is-off *::after{animation-play-state:paused!important}
 /* 見た目は変えない：常に動くものを GPU に任せてなめらかに */
 .band__row,.hb__ring,.nlogo__chip,.totop::before{will-change:transform}
+
+/* small logos (top-left / menu): tighter glow so the letters stay sharp (2026-11-25) */
+.gnav .nlogo__word,.menu__logo .nlogo__word{
+  color:#fff;-webkit-font-smoothing:antialiased;
+  text-shadow:0 0 1px #fff,0 0 3px rgba(255,61,90,.95),0 0 8px rgba(255,31,69,.7),0 0 18px rgba(255,31,69,.35)}
+.gnav .nlogo__sub,.menu__logo .nlogo__sub{color:#effdff;text-shadow:0 0 3px rgba(62,232,255,.7);-webkit-font-smoothing:antialiased}
+.gnav .nlogo__chip,.menu__logo .nlogo__chip{filter:drop-shadow(0 0 2px rgba(255,31,69,.8)) drop-shadow(0 0 6px rgba(255,31,69,.4))}
+.gnav__logo{background:radial-gradient(closest-side,rgba(5,3,8,.6),transparent)}
+.gnav .nlogo__word,.menu__logo .nlogo__word{animation:logoOn 2.4s steps(1) both}
