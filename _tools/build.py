@@ -6,7 +6,7 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261125p"
+VER = "20261125q"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
@@ -173,6 +173,8 @@ def layout(path, title, desc, body, top=False, og="img/photo/store-table.jpg"):
     d = os.path.join(OUT, path)
     os.makedirs(d, exist_ok=True)
     open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(html)
+
+MID_MARQ = "".join('<svg class="mqs" height="1" width="1"><text x="2" y="50%" dominant-baseline="central">PLAY · DRINK · PARTY —</text></svg>' for _ in range(4))
 
 def footer(P, u):
     nav = "".join(f'<a href="{u(p)}">{en}</a>' for p,en,jp,s in NAV)
@@ -364,6 +366,7 @@ def top():
     <div class="gsec__txt" data-reveal="right"><p>店内にはルーレット台もご用意。カードゲームの合間に、みんなでワイワイ盛り上がれます。</p><a class="btn" href="{{P}}casino-games/">ゲーム解説一覧</a></div>
   </div>
 </section>
+<div class="foot__marq mid-marq" aria-hidden="true"><div class="band__row rev">{MID_MARQ}</div></div>
 
 <section class="sec" id="system">
   <div class="wrap">

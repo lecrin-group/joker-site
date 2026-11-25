@@ -845,3 +845,6 @@ html{overflow-x:clip}
   .menu__body{padding-top:0;margin-top:-28px;justify-content:flex-start}
   .menu__logo{margin-bottom:12px}
 }
+
+/* トップ中間の流れる文字（フッターと同じ・逆向き） */
+.mid-marq{padding:clamp(18px,3vw,36px) 0;border-top:1px solid rgba(255,255,255,.08)}
