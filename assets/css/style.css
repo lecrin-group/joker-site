@@ -819,3 +819,8 @@ html{overflow-x:clip}
 .totop:hover{filter:drop-shadow(0 8px 18px rgba(0,0,0,.6)) drop-shadow(0 0 16px rgba(255,31,69,.8))}
 @keyframes chipFlip{0%{transform:rotate(var(--spin,0deg)) rotateY(0)}100%{transform:rotate(var(--spin,0deg)) rotateY(360deg)}}
 @media (max-width:767px){.totop{width:56px;height:56px;font-size:10px}.totop span i{font-size:12px}}
+
+/* ---- menu: 横ブレ防止（縦だけスクロール） ---- */
+.menu{overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;width:100%;max-width:100vw}
+@supports (overflow:clip){.menu{overflow-x:clip}}
+.menu__body,.menu__list,.menu__sns{max-width:100%;min-width:0}
