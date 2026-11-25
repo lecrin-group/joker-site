@@ -6,7 +6,7 @@ HTML を直接直すと、次に実行したとき上書きされるので注意
 import os, sys
 OUT = sys.argv[1]
 SITE = "https://joker.lecrin.biz"
-VER = "20261126b"
+VER = "20261126c"
 CUR = ' aria-current="page"'
 
 # ---- image slots (写真AC が届いたらここを .jpg に差し替える) ----
@@ -174,6 +174,9 @@ def layout(path, title, desc, body, top=False, og="img/photo/store-table.jpg"):
 </body>
 </html>
 '''
+    # 画像・動画の URL に版番号を付けて、スマホに古い画像が残らないようにする
+    import re as _re
+    html = _re.sub(r'((?:src|srcset|poster|data-wide|data-tall)="[^"?]*?\.(?:jpg|jpeg|png|webp|svg|mp4))"', r'\1?v=' + VER + '"', html)
     d = os.path.join(OUT, path)
     os.makedirs(d, exist_ok=True)
     open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(html)

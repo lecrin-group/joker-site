@@ -787,7 +787,7 @@ html{overflow-x:clip}
 .scan{opacity:.6}
 
 /* logo "o" = red/white casino chip image (2026-11-25) */
-.nlogo__chip{background:url(../../img/chip-red.png) center/contain no-repeat;box-shadow:none;
+.nlogo__chip{background:url(../../img/chip-red.png?v=20261126c) center/contain no-repeat;box-shadow:none;
   filter:drop-shadow(0 0 4px rgba(255,31,69,.9)) drop-shadow(0 0 12px rgba(255,31,69,.6));width:.6em;height:.6em;top:.06em;animation:spin 8s linear infinite}
 .nlogo__chip::after{content:none}
 
@@ -812,7 +812,7 @@ html{overflow-x:clip}
 /* PAGE TOP = casino chip (2026-11-25) */
 .totop{width:70px;height:70px;border-radius:50%;background:none;color:#b3111e;font-family:var(--f-en);font-size:12px;letter-spacing:.08em;line-height:1;
   display:grid;place-items:center;text-align:center;filter:drop-shadow(0 6px 14px rgba(0,0,0,.55)) drop-shadow(0 0 10px rgba(255,31,69,.45))}
-.totop::before{content:"";position:absolute;inset:0;border-radius:50%;background:url(../../img/chip-red.png) center/contain no-repeat;transform:rotate(var(--spin,0deg));transition:transform .15s linear}
+.totop::before{content:"";position:absolute;inset:0;border-radius:50%;background:url(../../img/chip-red.png?v=20261126c) center/contain no-repeat;transform:rotate(var(--spin,0deg));transition:transform .15s linear}
 .totop span{position:relative;display:block;font-weight:400}
 .totop span i{display:block;font-style:normal;font-size:15px;margin-bottom:1px}
 .totop:hover::before{animation:chipFlip .7s var(--ease)}
