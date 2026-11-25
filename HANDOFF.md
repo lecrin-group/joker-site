@@ -53,6 +53,7 @@
 
 ## これまで
 
+- 2026-11-25 TikTok・YouTube のボタンも出した（リンク先は未設定。押しても何も起きない。`_tools/build.py` の `TIKTOK_URL`・`YOUTUBE_URL` に URL を入れて build すればつながる）
 - 2026-11-25 SNS ボタンをすべてブランドの色に（X 黒・LINE 緑・Instagram グラデーション・TikTok 黒・YouTube 赤・Threads 黒）。Threads を追加（Instagram と同じ ID）。YouTube・TikTok は URL 待ち
 - 2026-11-25 ブラックジャック区画の写真を、赤い台でカードを配る手元（casino-dealer.jpg）に差し替え。店長確認のため Xserver のアクセス制限を ON（401 になることを確認）
 - 2026-11-25 トップの中間（ROULETTE と SYSTEM の間）に、フッターと同じ「ふちだけ・グラデーションが流れる文字」を追加（逆向きに流れる。文言は `_tools/build.py` の `MID_MARQ`）
