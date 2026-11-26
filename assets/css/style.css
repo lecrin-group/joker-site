@@ -787,7 +787,7 @@ html{overflow-x:clip}
 .scan{opacity:.6}
 
 /* logo "o" = red/white casino chip image (2026-11-25) */
-.nlogo__chip{background:url(../../img/chip-red.png?v=20261127b) center/contain no-repeat;box-shadow:none;
+.nlogo__chip{background:url(../../img/chip-red.png?v=20261127c) center/contain no-repeat;box-shadow:none;
   filter:drop-shadow(0 0 4px rgba(255,31,69,.9)) drop-shadow(0 0 12px rgba(255,31,69,.6));width:.6em;height:.6em;top:.06em;animation:spin 8s linear infinite}
 .nlogo__chip::after{content:none}
 
@@ -812,7 +812,7 @@ html{overflow-x:clip}
 /* PAGE TOP = casino chip (2026-11-25) */
 .totop{width:70px;height:70px;border-radius:50%;background:none;color:#b3111e;font-family:var(--f-en);font-size:12px;letter-spacing:.08em;line-height:1;
   display:grid;place-items:center;text-align:center;filter:drop-shadow(0 6px 14px rgba(0,0,0,.55)) drop-shadow(0 0 10px rgba(255,31,69,.45))}
-.totop::before{content:"";position:absolute;inset:0;border-radius:50%;background:url(../../img/chip-red.png?v=20261127b) center/contain no-repeat;transform:rotate(var(--spin,0deg));transition:transform .15s linear}
+.totop::before{content:"";position:absolute;inset:0;border-radius:50%;background:url(../../img/chip-red.png?v=20261127c) center/contain no-repeat;transform:rotate(var(--spin,0deg));transition:transform .15s linear}
 .totop span{position:relative;display:block;font-weight:400}
 .totop span i{display:block;font-style:normal;font-size:15px;margin-bottom:1px}
 .totop:hover::before{animation:chipFlip .7s var(--ease)}
@@ -909,9 +909,9 @@ html{overflow-x:clip}
 /* ---- menu: スマホ版・光のウェーブ（6秒に1回、上から下へ順に光る。2026-11-27） ---- */
 @keyframes menuWave{
   0%,100%{color:transparent;-webkit-text-stroke-color:rgba(255,255,255,.85);text-shadow:none}
-  3%{color:rgba(255,255,255,.5);-webkit-text-stroke-color:#fff;text-shadow:0 0 4px rgba(255,255,255,.5),0 0 11px color-mix(in srgb,var(--nc) 50%,transparent),0 0 24px color-mix(in srgb,var(--nc) 50%,transparent)}
+  3%{color:rgba(255,255,255,.25);-webkit-text-stroke-color:#fff;text-shadow:0 0 3px rgba(255,255,255,.25),0 0 7px color-mix(in srgb,var(--nc) 25%,transparent),0 0 14px color-mix(in srgb,var(--nc) 25%,transparent)}
   9%{color:transparent;-webkit-text-stroke-color:rgba(255,255,255,.85);text-shadow:none}}
-@keyframes menuWaveSub{0%,100%{color:var(--mute);text-shadow:none}3%{color:color-mix(in srgb,var(--nc) 50%,var(--mute));text-shadow:0 0 4px color-mix(in srgb,var(--nc) 50%,transparent)}9%{color:var(--mute);text-shadow:none}}
+@keyframes menuWaveSub{0%,100%{color:var(--mute);text-shadow:none}3%{color:color-mix(in srgb,var(--nc) 25%,var(--mute));text-shadow:0 0 3px color-mix(in srgb,var(--nc) 25%,transparent)}9%{color:var(--mute);text-shadow:none}}
 @media (max-width:767px) and (prefers-reduced-motion:no-preference){
   .is-menu .menu__list a:not(.is-flash) b{animation:menuWave 6s ease-in-out calc(1.2s + var(--i,0) * .12s) infinite}
   .is-menu .menu__list a:not(.is-flash) small{animation:menuWaveSub 6s ease-in-out calc(1.2s + var(--i,0) * .12s) infinite}
